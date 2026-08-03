@@ -1,0 +1,474 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+  padding: 1.25rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modalContent {
+  background: white;
+  border-radius: 1.25rem;
+  max-width: 56.25rem;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(1.875rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modalContent::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+  background: #fdb673;
+  border-radius: 0.125rem;
+}
+
+/* ===== Close Button - إصلاح ===== */
+.closeBtn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(0, 0, 0, 0.08);
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  padding: 0;
+}
+
+.closeBtn:hover {
+  background: #fdb673;
+  color: white;
+  transform: rotate(90deg);
+}
+
+.closeBtn svg {
+  font-size: 1.2rem;
+}
+
+/* ===== Modal Body ===== */
+.modalBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* ===== Image Section ===== */
+.imageSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mainImage {
+  background: #faf9f8;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1rem;
+}
+
+.thumbnailList {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.thumbnail {
+  width: 4.375rem;
+  height: 4.375rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  border: 0.125rem solid transparent;
+  transition: all 0.3s ease;
+  background: #faf9f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.25rem;
+}
+
+.thumbnail.active {
+  border-color: #fdb673;
+  box-shadow: 0 0 0 0.25rem rgba(253, 182, 115, 0.15);
+}
+
+/* ===== Info Section ===== */
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.category {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fdb673;
+  letter-spacing: 0.0625rem;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #3b2e1e;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.starFilled {
+  color: #ffc107;
+  font-size: 0.9rem;
+}
+
+.starHalf {
+  color: #ffc107;
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+.starEmpty {
+  color: #e4e5e9;
+  font-size: 0.9rem;
+}
+
+.ratingCount {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #3b2e1e;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.originalPrice {
+  font-size: 1.2rem;
+  color: #999;
+  text-decoration: line-through;
+  font-weight: 400;
+}
+
+.description {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.discountBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  width: fit-content;
+}
+
+/* ===== Quantity - إصلاح ===== */
+.quantitySection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.quantityLabel {
+  font-weight: 600;
+  color: #3b2e1e;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #faf9f8;
+  padding: 0.25rem;
+  border-radius: 0.625rem;
+  border: 0.0625rem solid #e8e8e8;
+}
+
+.qtyBtn {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: white;
+  color: #3b2e1e;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.qtyBtn:hover:not(:disabled) {
+  background: #fdb673;
+  color: white;
+}
+
+.qtyBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.qtyBtn svg {
+  font-size: 0.9rem;
+}
+
+.quantityNumber {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #3b2e1e;
+  min-width: 2.5rem;
+  text-align: center;
+}
+
+/* ===== Actions - إصلاح زر القلب ===== */
+.actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+}
+
+.addToCartBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.85rem;
+  background: #fdb673;
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.addToCartBtn:hover {
+  background: #ff9a3d;
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.5rem 1.25rem rgba(253, 182, 115, 0.25);
+}
+
+.wishlistBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem;
+  background: #faf9f8;
+  border: 0.125rem solid #e8e8e8;
+  border-radius: 0.75rem;
+  color: #666;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 3.125rem;
+}
+
+.wishlistBtn:hover {
+  background: #fef5f5;
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+.wishlistBtn.active {
+  background: #ff6b6b;
+  border-color: #ff6b6b;
+  color: white;
+}
+
+.wishlistBtn.active:hover {
+  background: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.wishlistBtn svg {
+  font-size: 1.2rem;
+}
+
+/* ===== Features ===== */
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  border-top: 0.0625rem solid #f0f0f0;
+  border-bottom: 0.0625rem solid #f0f0f0;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.feature svg {
+  color: #fdb673;
+  font-size: 0.9rem;
+}
+
+.viewDetails {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fdb673;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.viewDetails:hover {
+  color: #ff9a3d;
+  transform: translateX(0.25rem);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 48rem) {
+  .modalBody {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .mainImage {
+    aspect-ratio: 4 / 3;
+  }
+
+  .thumbnail {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .price {
+    font-size: 1.6rem;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .actions {
+    grid-template-columns: 1fr;
+  }
+
+  .wishlistBtn {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 30rem) {
+  .modalBody {
+    padding: 1rem;
+  }
+
+  .modalContent {
+    max-height: 95vh;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .price {
+    font-size: 1.4rem;
+  }
+
+  .quantitySection {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .thumbnail {
+    width: 3.125rem;
+    height: 3.125rem;
+  }
+
+  .closeBtn {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.9rem;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+}

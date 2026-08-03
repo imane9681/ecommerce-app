@@ -1,0 +1,327 @@
+.blogCard {
+  background: #ffffff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 0.3125rem 1.25rem rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  border: 0.0625rem solid rgba(253, 182, 115, 0.08);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.blogCard:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 0.75rem 2.5rem rgba(253, 182, 115, 0.12);
+  border-color: rgba(253, 182, 115, 0.2);
+}
+
+.blogCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.1875rem;
+  background: linear-gradient(90deg, #fdb673, #ff9a3d);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.blogCard:hover::before {
+  opacity: 1;
+}
+
+.cardImage {
+  position: relative;
+  height: 14rem;
+  overflow: hidden;
+  background: #f8f4ee;
+  flex-shrink: 0;
+}
+
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.blogCard:hover .cardImage img {
+  transform: scale(1.06);
+}
+
+.cardCategory {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1.25rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #fdb673;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  border: 0.0625rem solid rgba(253, 182, 115, 0.15);
+  z-index: 2;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.06);
+}
+
+.categoryIcon {
+  font-size: 0.6rem;
+}
+
+.featuredBadge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  color: #ffffff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 1.25rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  z-index: 2;
+  box-shadow: 0 0.125rem 0.5rem rgba(238, 90, 36, 0.3);
+}
+
+.bookmarkBtn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border: 0.125rem solid rgba(200, 200, 200, 0.2);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.08);
+  z-index: 3;
+  padding: 0;
+}
+
+.bookmarkBtn:hover {
+  background: #ffffff;
+  border-color: #fdb673;
+  transform: scale(1.1);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.12);
+}
+
+.bookmarkBtn:hover svg {
+  color: #fdb673;
+}
+
+.bookmarkBtn.active {
+  background: #fdb673;
+  border-color: #fdb673;
+  box-shadow: 0 0.25rem 0.75rem rgba(253, 182, 115, 0.25);
+}
+
+.bookmarkBtn.active svg {
+  color: #ffffff;
+}
+
+.bookmarkBtn:focus {
+  outline: none;
+}
+
+.cardContent {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardMeta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.metaIcon {
+  font-size: 0.7rem;
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #3b2e1e;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.blogCard:hover .cardTitle {
+  color: #6d4c33;
+}
+
+.cardExcerpt {
+  color: #888;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 0.0625rem solid #f5f5f5;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.authorIcon {
+  font-size: 0.8rem;
+  color: #fdb673;
+}
+
+.cardStats {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.readMoreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.6rem 1.5rem;
+  background: #fdb673;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  width: 100%;
+  justify-content: center;
+}
+
+.readMoreBtn:hover {
+  background: #ff9a3d;
+  color: #ffffff;
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.5rem 1.25rem rgba(253, 182, 115, 0.25);
+}
+
+.btnIcon {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.readMoreBtn:hover .btnIcon {
+  transform: translateX(0.25rem);
+}
+
+
+@media (max-width: 48rem) {
+  .cardImage {
+    height: 11rem;
+  }
+
+  .cardContent {
+    padding: 1.2rem;
+  }
+
+  .cardTitle {
+    font-size: 1.1rem;
+  }
+
+  .cardMeta {
+    gap: 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .bookmarkBtn {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 0.85rem;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  
+}
+
+@media (max-width: 30rem) {
+  .cardImage {
+    height: 9rem;
+  }
+
+  .cardContent {
+    padding: 1rem;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+  }
+
+  .cardExcerpt {
+    font-size: 0.85rem;
+  }
+
+  .cardFooter {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .cardStats {
+    justify-content: flex-start;
+  }
+
+}

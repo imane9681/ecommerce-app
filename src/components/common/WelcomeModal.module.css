@@ -1,0 +1,554 @@
+/* ===== Modal Overlay ===== */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 1.25rem;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== Modal Content ===== */
+.modalContent {
+  background: white;
+  border-radius: 1.5rem;
+  max-width: 65.25rem;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 1.875rem 5rem rgba(0, 0, 0, 0.25);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(3.125rem) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===== Close Button ===== */
+.closeBtn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(0, 0, 0, 0.08);
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+  padding: 0;
+}
+
+.closeBtn:hover {
+  background: #fdb673;
+  color: white;
+  transform: rotate(90deg);
+}
+
+.closeBtn svg {
+  font-size: 1.2rem;
+}
+
+/* ===== Modal Body ===== */
+.modalBody {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  min-height: 25rem;
+}
+
+/* ===== Left Section ===== */
+.modalLeft {
+  background: linear-gradient(135deg, #b281e2 0%, #f1caa9 100%);
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem 0 0 1.5rem;
+}
+
+.modalLeft::before {
+  content: '';
+  position: absolute;
+  width: 20rem;
+  height: 20rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 50%;
+  top: -8rem;
+  right: -8rem;
+}
+
+.modalLeft::after {
+  content: '';
+  position: absolute;
+  width: 15rem;
+  height: 15rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 50%;
+  bottom: -6rem;
+  left: -6rem;
+}
+
+/* ===== الأيقونة - توسيطها في المنتصف ===== */
+.decorationIcon {
+  position: relative;
+  z-index: 1;
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0.5rem;
+  animation: floatIcon 3s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes floatIcon {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.5rem);
+  }
+}
+
+.leftContent {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  width: 100%;
+}
+
+.leftContent h2 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-bottom: 0.2rem;
+}
+
+.leftContent h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 0.3rem;
+  text-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.03125rem;
+}
+
+.leftContent p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  max-width: 16rem;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ===== Right Section ===== */
+.modalRight {
+  padding: 2rem 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modalHeader {
+  margin-bottom: 1rem;
+}
+
+.headerBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(253, 182, 115, 0.1);
+  border: 0.0625rem solid rgba(253, 182, 115, 0.2);
+  padding: 0.25rem 0.8rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fdb673;
+  margin-bottom: 0.5rem;
+}
+
+.badgeIcon {
+  font-size: 0.75rem;
+}
+
+.modalTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #3b2e1e;
+  margin-bottom: 0.3rem;
+  line-height: 1.2;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #fdb673, #ff9a3d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.modalSubtitle {
+  color: #666;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ===== Features ===== */
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  background: #faf9f8;
+  border-radius: 0.5rem;
+  border: 0.0625rem solid rgba(253, 182, 115, 0.06);
+}
+
+.featureIcon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.4rem;
+  background: rgba(253, 182, 115, 0.1);
+  color: #fdb673;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.featureItem h4 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #3b2e1e;
+  margin: 0;
+}
+
+.featureItem p {
+  font-size: 0.65rem;
+  color: #888;
+  margin: 0;
+}
+
+/* ===== Newsletter Form ===== */
+.newsletterForm {
+  margin-bottom: 0.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.emailInput {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  border: 0.125rem solid #e8e8e8;
+  border-radius: 0.625rem;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  background: #faf9f8;
+  color: #3b2e1e;
+}
+
+.emailInput:focus {
+  outline: none;
+  border-color: #fdb673;
+  background: white;
+  box-shadow: 0 0 0 0.25rem rgba(253, 182, 115, 0.1);
+}
+
+.emailInput::placeholder {
+  color: #bbb;
+}
+
+.submitBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.2rem;
+  background: linear-gradient(135deg, #fdb673, #ff9a3d);
+  color: white;
+  border: none;
+  border-radius: 0.625rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.submitBtn:hover {
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.5rem 1.25rem rgba(253, 182, 115, 0.25);
+}
+
+.btnIcon {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.submitBtn:hover .btnIcon {
+  transform: translateX(0.1875rem);
+}
+
+.formFooter {
+  margin-top: 0.5rem;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: #888;
+  cursor: pointer;
+}
+
+.checkboxContainer input {
+  display: none;
+}
+
+.customCheckbox {
+  width: 1rem;
+  height: 1rem;
+  border: 0.125rem solid #ddd;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.checkboxContainer input:checked + .customCheckbox {
+  background: #fdb673;
+  border-color: #fdb673;
+}
+
+.checkboxContainer input:checked + .customCheckbox::after {
+  content: '✓';
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
+/* ===== Success Message ===== */
+.successMessage {
+  text-align: center;
+  padding: 1rem 0;
+  animation: fadeIn 0.5s ease;
+}
+
+.successIcon {
+  font-size: 3rem;
+  color: #2ecc71;
+  margin-bottom: 0.5rem;
+}
+
+.successMessage h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #3b2e1e;
+  margin-bottom: 0.2rem;
+}
+
+.successMessage p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* ===== Skip Button ===== */
+.skipBtn {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0.3rem;
+  margin: 0 auto;
+  display: block;
+}
+
+.skipBtn:hover {
+  color: #fdb673;
+}
+
+/* ===== Trust Badges ===== */
+.trustBadges {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 0.0625rem solid #f0f0f0;
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  color: #888;
+}
+
+.trustIcon {
+  color: #fdb673;
+  font-size: 0.8rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 48rem) {
+  .modalBody {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .modalLeft {
+    border-radius: 1.5rem 1.5rem 0 0;
+    padding: 2rem 1.5rem;
+  }
+
+  .leftContent h1 {
+    font-size: 2.2rem;
+  }
+
+  .decorationIcon {
+    font-size: 3.5rem;
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .modalRight {
+    padding: 1.5rem;
+  }
+
+  .modalTitle {
+    font-size: 1.4rem;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .inputGroup {
+    flex-direction: column;
+  }
+
+  .submitBtn {
+    justify-content: center;
+  }
+
+  .trustBadges {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .closeBtn {
+    top: 0.75rem;
+    right: 0.75rem;
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .closeBtn:hover {
+    background: #fdb673;
+  }
+}
+
+@media (max-width: 30rem) {
+  .modalContent {
+    border-radius: 1rem;
+  }
+
+  .modalLeft {
+    padding: 1.5rem 1rem;
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  .leftContent h1 {
+    font-size: 1.8rem;
+  }
+
+  .leftContent p {
+    font-size: 0.8rem;
+  }
+
+  .decorationIcon {
+    font-size: 2.8rem;
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .modalRight {
+    padding: 1rem;
+  }
+
+  .modalTitle {
+    font-size: 1.1rem;
+  }
+
+  .headerBadge {
+    font-size: 0.65rem;
+  }
+
+  .featureItem {
+    padding: 0.4rem;
+  }
+
+  .emailInput {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .submitBtn {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .trustItem {
+    font-size: 0.65rem;
+  }
+}

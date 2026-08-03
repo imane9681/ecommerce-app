@@ -1,0 +1,313 @@
+.page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fffaf0 0%, #fdf4e3 100%);
+}
+
+.container {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ===== Hero Section ===== */
+.heroSection {
+  position: relative;
+  padding: 8rem 2rem 4.5rem 2rem;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #b281e2 0%, #f1caa9 100%);
+  isolation: isolate;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 25rem;
+  height: 25rem;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.heroSection::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -5%;
+  width: 20rem;
+  height: 20rem;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.25);
+  padding: 0.4rem 1.2rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.heroBadgeIcon {
+  font-size: 0.9rem;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #3b2e1e;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  text-shadow: 0 0.125rem 0.5rem rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.03125rem;
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  color: rgba(59, 46, 30, 0.75);
+  max-width: 35rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ===== Content ===== */
+.content {
+  background: white;
+  border-radius: 1rem;
+  padding: 3rem;
+  margin: -2rem 0 4rem;
+  box-shadow: 0 0.3125rem 1.25rem rgba(0, 0, 0, 0.05);
+  border: 0.0625rem solid rgba(253, 182, 115, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.lastUpdated {
+  padding: 0.75rem 1rem;
+  background: #faf9f8;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #3b2e1e;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section h2 .sectionIcon {
+  color: #fdb673;
+  font-size: 1.6rem;
+}
+
+.section p {
+  color: #666;
+  line-height: 1.8;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.section p:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== Info Grid ===== */
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.infoCard {
+  background: #faf9f8;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 0.0625rem solid rgba(253, 182, 115, 0.08);
+}
+
+.infoCard h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #3b2e1e;
+  margin-bottom: 0.75rem;
+}
+
+.infoCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.infoCard ul li {
+  padding: 0.4rem 0;
+  color: #666;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.infoCard ul li::before {
+  content: '•';
+  color: #fdb673;
+  font-weight: bold;
+}
+
+/* ===== Use Grid ===== */
+.useGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.useCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: #faf9f8;
+  border-radius: 0.75rem;
+  border: 0.0625rem solid rgba(253, 182, 115, 0.08);
+}
+
+.useIcon {
+  color: #2ecc71;
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.useCard h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #3b2e1e;
+  margin-bottom: 0.25rem;
+}
+
+.useCard p {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0;
+}
+
+/* ===== Contact Info ===== */
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #666;
+  font-size: 1rem;
+}
+
+.contactItemIcon {
+  color: #fdb673;
+  font-size: 1.1rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 48rem) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .content {
+    padding: 1.5rem;
+    margin: -1rem 0 3rem;
+  }
+
+  .section h2 {
+    font-size: 1.4rem;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .useGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 30rem) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroSection {
+    padding: 3rem 1rem 2.5rem;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .section h2 {
+    font-size: 1.2rem;
+  }
+
+  .section p {
+    font-size: 0.95rem;
+  }
+
+  .infoCard {
+    padding: 1rem;
+  }
+
+  .useCard {
+    padding: 1rem;
+  }
+}

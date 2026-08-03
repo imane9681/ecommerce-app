@@ -1,0 +1,228 @@
+/* NewCollection.module.css - التصميم الأصلي + تجاوب */
+
+.newcol {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.newc {
+  width: 100%;
+  height: 30em;
+  position: relative;
+  overflow: hidden;
+  background: rgb(253, 210, 253);
+}
+
+.newc::before {
+  content: '';
+  position: absolute;
+  left: -1.6em;
+  top: 50%;
+  transform: translateY(-50%) rotate(20deg);
+  background: #ffe4ca;
+  width: 60%;
+  height: 140%;
+  box-shadow: 0 0 20px rgba(245, 192, 173, 0.7);
+}
+
+.newcol .newc::before {
+  transform: translateY(-50%) rotate(20deg);
+  left: initial;
+  right: -6.1em;
+}
+
+.captr {
+  float: right;
+  z-index: 1000;
+  position: relative;
+  margin-right: 8.75rem; /* 140px */
+  bottom: 2.5rem; /* 40px */
+  max-width: 30.625rem; /* 490px */
+}
+
+.rig {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem; /* 10px */
+  position: absolute;
+  margin-top: 4.5rem;
+  margin-left: 4.5rem;
+}
+
+.rep {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  opacity: 0.5;
+}
+
+.repa {
+  font-size: 3.25rem; /* 52px */
+  font-weight: 900;
+  color: black;
+}
+
+.explore {
+  margin-top: 1.25rem; /* 20px */
+  background-color: #fdb673;
+  color: white;
+  padding: 0.9375rem 2.5rem; /* 15px 40px */
+  border: none;
+  border-radius: 0.25rem; /* 4px */
+  font-size: 0.9375rem; /* 15px */
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.explore:hover {
+  background-color: #fac18c;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 75rem) { /* 1200px */
+  .captr {
+    max-width: 25rem;
+    margin-right: 6.25rem;
+  }
+
+  .repa {
+    font-size: 2.75rem;
+  }
+}
+
+@media (max-width: 64rem) { /* 1024px */
+  .newc {
+    height: 25em;
+  }
+
+  .captr {
+    max-width: 20rem;
+    margin-right: 4.375rem;
+    bottom: 1.875rem;
+  }
+
+  .rig {
+    margin-top: 3.125rem;
+    margin-left: 3.125rem;
+  }
+
+  .repa {
+    font-size: 2.25rem;
+  }
+
+  .rep {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 48rem) { /* 768px */
+  .newc {
+    height: 20em;
+  }
+
+  .newc::before {
+    width: 80%;
+    height: 120%;
+    right: -4.375rem;
+  }
+
+  .captr {
+    max-width: 15rem;
+    margin-right: 2.5rem;
+    bottom: 1.25rem;
+  }
+
+  .rig {
+    margin-top: 2.5rem;
+    margin-left: 2.5rem;
+    gap: 0.375rem;
+  }
+
+  .repa {
+    font-size: 1.75rem;
+  }
+
+  .rep {
+    font-size: 0.9375rem;
+  }
+
+  .explore {
+    padding: 0.75rem 1.875rem;
+    font-size: 0.8125rem;
+    margin-top: 0.9375rem;
+  }
+}
+
+@media (max-width: 30rem) { /* 480px */
+  .newc {
+    height: 15em;
+  }
+
+  .newc::before {
+    width: 100%;
+    height: 100%;
+    right: -2.5rem;
+    opacity: 0.3;
+  }
+
+  .captr {
+    max-width: 10rem;
+    margin-right: 1.25rem;
+    bottom: 0.625rem;
+  }
+
+  .rig {
+    margin-top: 1.25rem;
+    margin-left: 1.25rem;
+    gap: 0.25rem;
+  }
+
+  .repa {
+    font-size: 1.25rem;
+  }
+
+  .rep {
+    font-size: 0.75rem;
+  }
+
+  .explore {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.6875rem;
+    margin-top: 0.625rem;
+    border-radius: 0.1875rem;
+  }
+}
+
+@media (max-width: 22.5rem) { /* 360px */
+  .newc {
+    height: 12.5em;
+  }
+
+  .captr {
+    max-width: 7.5rem;
+    margin-right: 0.625rem;
+    bottom: 0.3125rem;
+  }
+
+  .rig {
+    margin-top: 0.9375rem;
+    margin-left: 0.9375rem;
+  }
+
+  .repa {
+    font-size: 1rem;
+  }
+
+  .rep {
+    font-size: 0.625rem;
+  }
+
+  .explore {
+    padding: 0.375rem 0.9375rem;
+    font-size: 0.5625rem;
+    margin-top: 0.375rem;
+  }
+}

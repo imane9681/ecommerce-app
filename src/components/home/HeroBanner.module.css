@@ -1,0 +1,189 @@
+/* HeroSlider.module.css */
+/* كل الـ CSS السابق يبقى كما هو، وأضف فقط هذه الأنماط الجديدة */
+
+.txt {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
+  color: #fff;
+  letter-spacing: 2px;
+  line-height: 35px;
+  top: 30%;
+  left: 10%;
+  z-index: 1;
+  animation-name: posi;
+  animation-duration: 2s;
+}
+
+@keyframes posi {
+  from {
+    top: 25%;
+  }
+  to {
+    left: 10%;
+  }
+}
+
+/* Badge جديد */
+.badge {
+  background: linear-gradient(135deg, #ff6b6b, #ffa726);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  margin-bottom: 10px;
+  animation: pulse 2s infinite;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.offer {
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.super {
+  color: white;
+  font-size: 68px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+  margin-bottom: 15px;
+}
+
+.couponce {
+  color: white;
+  font-size: 22px;
+  opacity: 0.9;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  margin-bottom: 10px;
+}
+
+.shop {
+  margin-top: 20px;
+  background: linear-gradient(135deg, #fcbe84, #ff9a44);
+  color: white;
+  padding: 18px 50px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 6px 20px rgba(252, 190, 132, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.shop:hover {
+  background: linear-gradient(135deg, #ff9a44, #fcbe84);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(252, 190, 132, 0.6);
+}
+
+.shop:active {
+  transform: translateY(-1px);
+}
+
+/* تحسينات للرسوم المتحركة */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from { 
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* تحسينات الاستجابة */
+@media (max-width: 768px) {
+  .txt {
+    left: 5%;
+    top: 25%;
+    gap: 15px;
+  }
+  
+  .badge {
+    font-size: 12px;
+    padding: 6px 15px;
+  }
+  
+  .offer {
+    font-size: 18px;
+  }
+  
+  .super {
+    font-size: 42px;
+    line-height: 1.2;
+  }
+  
+  .couponce {
+    font-size: 16px;
+  }
+  
+  .shop {
+    padding: 15px 35px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .txt {
+    left: 5%;
+    top: 20%;
+    gap: 12px;
+  }
+  
+  .badge {
+    font-size: 10px;
+    padding: 5px 12px;
+  }
+  
+  .offer {
+    font-size: 16px;
+  }
+  
+  .super {
+    font-size: 32px;
+  }
+  
+  .couponce {
+    font-size: 14px;
+  }
+  
+  .shop {
+    padding: 12px 25px;
+    font-size: 12px;
+  }
+}

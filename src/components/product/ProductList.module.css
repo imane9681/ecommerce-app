@@ -1,0 +1,10 @@
+/* ProductList.module.css */
+.productCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 120rem;
+  margin: 0 auto;
+  gap: 1rem;
+}

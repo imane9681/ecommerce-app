@@ -1,0 +1,131 @@
+/* ShippingBanner.module.css - التصميم الأصلي + تجاوب */
+
+.shippingBanner {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1.5625rem 2.5rem; /* 25px 40px */
+  border-radius: 0.9375rem; /* 15px */
+  display: flex;
+  align-items: center;
+  gap: 1.25rem; /* 20px */
+  margin: 1.875rem auto; /* 30px auto */
+  max-width: 75rem; /* 1200px */
+  border-left: 0.3125rem solid #28a745; /* 5px */
+  box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.shippingBanner:hover {
+  transform: translateY(-0.1875rem);
+  box-shadow: 0 0.5rem 1.5625rem rgba(0, 0, 0, 0.12);
+  border-left-color: #20c997;
+}
+
+.bannerIcon {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, #28a745, #20c997);
+  padding: 0.9375rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.375rem;
+  height: 4.375rem;
+  animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.bannerContent {
+  flex: 1;
+}
+
+.bannerTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.3125rem;
+  color: #2c3e50;
+}
+
+.bannerDescription {
+  font-size: 1rem;
+  color: #6c757d;
+  margin: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 48rem) { /* 768px */
+  .shippingBanner {
+    padding: 1.25rem 1.5625rem;
+    margin: 1.25rem;
+    text-align: center;
+    flex-direction: column;
+    gap: 0.9375rem;
+    border-left: 0.3125rem solid #28a745;
+  }
+
+  .bannerIcon {
+    width: 3.75rem;
+    height: 3.75rem;
+    font-size: 2rem;
+  }
+
+  .bannerTitle {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 30rem) { /* 480px */
+  .shippingBanner {
+    padding: 0.9375rem 1.25rem;
+    margin: 0.9375rem;
+    border-left-width: 0.25rem;
+  }
+
+  .bannerIcon {
+    width: 3.125rem;
+    height: 3.125rem;
+    font-size: 1.5rem;
+    padding: 0.75rem;
+  }
+
+  .bannerTitle {
+    font-size: 1.2rem;
+  }
+
+  .bannerDescription {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 22.5rem) { /* 360px */
+  .shippingBanner {
+    padding: 0.75rem 0.9375rem;
+    margin: 0.625rem;
+  }
+
+  .bannerIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+  }
+
+  .bannerTitle {
+    font-size: 1rem;
+  }
+
+  .bannerDescription {
+    font-size: 0.75rem;
+  }
+}

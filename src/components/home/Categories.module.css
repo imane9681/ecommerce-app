@@ -1,0 +1,332 @@
+/* Categories.module.css - باستخدام rem + متجاوب */
+
+.categoriesSection {
+  position: relative;
+  padding: 2rem 2.5rem; /* 70px 40px */
+  overflow: hidden;
+}
+
+.container {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 0 2.5rem; /* 40px */
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 2.5rem; /* 40px */
+}
+
+.sectionTitle {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #3b2e1e;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, #3b2c1e, #695b47);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sectionSubtitle {
+  font-size: 1rem;
+  color: #000000;
+  opacity: 0.6;
+  max-width: 25rem; /* 400px */
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Categories Wrapper */
+.categoriesWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.875rem; /* 30px */
+}
+
+.categoriesContainer {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  width: 100%;
+  padding: 0.625rem 0;
+}
+
+.categoriesContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.categoriesScroll {
+  display: flex;
+  gap: 0.9375rem; /* 15px */
+  padding: 0.625rem 0.3125rem;
+  min-width: min-content;
+}
+
+/* Category Card */
+.categoryCard {
+  background: #fffefd;
+  border-radius: 1rem; /* 16px */
+  padding: 1.5625rem 1.25rem; /* 25px 20px */
+  text-align: center;
+  border: 0.0625rem solid #fde1cc;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0.75rem 1.875rem rgba(250, 156, 101, 0.15);
+  min-width: 12.5rem; /* 200px */
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.categoryCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.1875rem; /* 3px */
+  background: linear-gradient(90deg, #4f46e5, #ec4899, #10b981);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.categoryCard:hover {
+  transform: translateY(-0.3125rem);
+  box-shadow: 0 0.75rem 1.875rem rgba(0, 0, 0, 0.15);
+  border-color: #f0e8e2;
+}
+
+.categoryCard:hover::before {
+  opacity: 1;
+}
+
+.categoryIcon {
+  width: 4.375rem; /* 70px */
+  height: 4.375rem; /* 70px */
+  border-radius: 1.125rem; /* 18px */
+  margin: 0 auto 0.9375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.categoryCard:hover .categoryIcon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.iconWrapper {
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
+}
+
+.categoryCard:hover .iconWrapper {
+  transform: scale(1.15);
+}
+
+.categoryContent {
+  margin-bottom: 1.25rem;
+}
+
+.categoryName {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #3b2a1e;
+  margin-bottom: 0.375rem;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.categoryCard:hover .categoryName {
+  background: linear-gradient(135deg, #4f46e5, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.categoryItems {
+  font-size: 0.8rem;
+  color: #8b7464;
+  margin: 0;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.shopButton {
+  background: #fdb673;
+  color: white;
+  border: none;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.625rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.shopButton:hover {
+  transform: translateY(-0.125rem);
+  color: white;
+  box-shadow: 0 0.375rem 1.25rem rgba(229, 147, 70, 0.4);
+}
+
+/* Scroll Buttons */
+.scrollButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5rem; /* 40px */
+  height: 2.5rem; /* 40px */
+  border-radius: 50%;
+  background: white;
+  border: 0.0625rem solid #ffe6d3;
+  color: #695747;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  justify-content: center;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.scrollButton:focus {
+  outline: none;
+}
+
+.scrollButton:hover {
+  background: #fcc591;
+  color: white;
+  border-color: #ffdebe;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.scrollLeft {
+  left: -3.125rem; /* -50px */
+}
+
+.scrollRight {
+  right: -3.125rem; /* -50px */
+}
+
+/* Dots Indicator */
+.dotsIndicator {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.625rem;
+}
+
+.dot {
+  width: 0.5rem; /* 8px */
+  height: 0.5rem; /* 8px */
+  border-radius: 50%;
+  background: #e1d7cb;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dot.active {
+  background: #fcc591;
+  transform: scale(1.2);
+}
+
+.dot:hover {
+  background: #b8a494;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 48rem) { /* 768px */
+  .categoriesSection {
+    padding: 2.5rem 2.5rem; /* 40px 40px */
+  }
+
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+
+  .sectionSubtitle {
+    font-size: 1rem;
+  }
+
+  .scrollButton {
+    width: 2.375rem; /* 38px */
+    height: 2.375rem; /* 38px */
+  }
+
+  .scrollLeft {
+    left: -0.9375rem; /* -15px */
+  }
+
+  .scrollRight {
+    right: -0.9375rem; /* -15px */
+  }
+
+  .categoryCard {
+    min-width: 8.75rem; /* 140px */
+    padding: 1.25rem 0.9375rem; /* 20px 15px */
+  }
+
+  .categoryIcon {
+    width: 3.75rem; /* 60px */
+    height: 3.75rem; /* 60px */
+  }
+
+  .iconWrapper {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    padding: 0 1.25rem; /* 20px */
+  }
+}
+
+@media (max-width: 30rem) { /* 480px */
+  .container {
+    padding: 0 0.9375rem; /* 15px */
+  }
+
+  .scrollButton {
+    display: none;
+  }
+
+  .categoriesContainer {
+    padding: 0 0.3125rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 22.5rem) { /* 360px */
+  .categoryCard {
+    min-width: 7.5rem; /* 120px */
+    padding: 0.9375rem 0.625rem; /* 15px 10px */
+  }
+
+  .categoryIcon {
+    width: 3.125rem; /* 50px */
+    height: 3.125rem; /* 50px */
+  }
+
+  .iconWrapper {
+    font-size: 1.25rem;
+  }
+
+  .categoryName {
+    font-size: 0.875rem;
+  }
+
+  .shopButton {
+    font-size: 0.6875rem;
+    padding: 0.5rem 0.625rem;
+  }
+}

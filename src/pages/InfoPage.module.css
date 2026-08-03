@@ -1,0 +1,57 @@
+.infoPage {
+  padding: 60px 20px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.infoHeader {
+  margin-bottom: 32px;
+}
+
+.infoTitle {
+  font-size: clamp(2rem, 3vw, 3rem);
+  margin-bottom: 12px;
+  color: #222;
+}
+
+.infoSubtitle {
+  max-width: 760px;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #4d4d4d;
+}
+
+.infoCards {
+  display: grid;
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.infoCard {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+  padding: 28px;
+}
+
+.infoCardTitle {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.infoCardText {
+  line-height: 1.8;
+  color: #555;
+}
+
+.infoList {
+  padding-left: 20px;
+  margin-top: 16px;
+  color: #555;
+  line-height: 1.8;
+}
+
+.infoList li {
+  margin-bottom: 10px;
+}
