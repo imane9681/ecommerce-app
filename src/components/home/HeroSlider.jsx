@@ -1,9 +1,12 @@
-// HeroSlider.jsx - نفس تصميمك الأصلي تماماً
-import React, { useState, useEffect } from 'react';
+// HeroSlider.jsx - مع دعم اللمس
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './HeroSlider.module.css';
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
+  const sliderRef = useRef(null);
 
   const slides = [
     {
@@ -44,6 +47,7 @@ const HeroSlider = () => {
     }
   ];
 
+  // التبديل التلقائي
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -52,8 +56,84 @@ const HeroSlider = () => {
     return () => clearInterval(timer);
   }, [slides.length]);
 
+  // ===== دعم اللمس =====
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX - touchEndX > 50) {
+      // سحب لليسار -> السلايد التالي
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }
+
+    if (touchStartX - touchEndX < -50) {
+      // سحب لليمين -> السلايد السابق
+      setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    }
+
+    // إعادة تعيين القيم
+    setTouchStartX(0);
+    setTouchEndX(0);
+  };
+
+  // ===== دعم التمرير بالماوس (للحاسوب) =====
+  const [mouseStartX, setMouseStartX] = useState(0);
+  const [mouseEndX, setMouseEndX] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setMouseStartX(e.clientX);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    setMouseEndX(e.clientX);
+  };
+
+  const handleMouseUp = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+
+    if (mouseStartX - mouseEndX > 50) {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }
+
+    if (mouseStartX - mouseEndX < -50) {
+      setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    }
+
+    setMouseStartX(0);
+    setMouseEndX(0);
+  };
+
+  // منع النقر أثناء السحب
+  const handleDragPrevent = (e) => {
+    if (isDragging) {
+      e.preventDefault();
+    }
+  };
+
   return (
-    <div className={styles.slider}>
+    <div 
+      className={styles.slider}
+      ref={sliderRef}
+      // أحداث اللمس
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      // أحداث الماوس
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseUp}
+      onClick={handleDragPrevent}
+    >
       {slides.map((slide, index) => (
         <div 
           key={index}
@@ -71,7 +151,6 @@ const HeroSlider = () => {
             </div>
           </div>
           
-          {/* صور متجاوبة - هاتف / ديسكتوب */}
           <picture>
             <source 
               media="(max-width: 48rem)" 
