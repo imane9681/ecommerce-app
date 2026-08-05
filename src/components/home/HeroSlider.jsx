@@ -1,4 +1,4 @@
-// HeroSlider.jsx - نسخة معدلة مع تحسينات
+// HeroSlider.jsx - نفس تصميمك الأصلي تماماً
 import React, { useState, useEffect } from 'react';
 import styles from './HeroSlider.module.css';
 
@@ -8,6 +8,7 @@ const HeroSlider = () => {
   const slides = [
     {
       image: "/images/img1.png",
+      mobileImage: "/images/image4.png",
       title: "SUMMER COLLECTION 2024",
       subtitle: "Fresh Styles",
       subtitle2: "Amazing Deals",
@@ -15,7 +16,8 @@ const HeroSlider = () => {
       buttonText: "SHOP COLLECTION"
     },
     {
-      image: "/images/img2.png", 
+      image: "/images/img2.png",
+      mobileImage: "/images/image3.png",
       title: "LIMITED TIME OFFER",
       subtitle: "Flash Sale",
       subtitle2: "Up to 70% OFF",
@@ -24,6 +26,7 @@ const HeroSlider = () => {
     },
     {
       image: "/images/img3.png",
+      mobileImage: "/images/image2.png",
       title: "NEW ARRIVALS", 
       subtitle: "Just Launched",
       subtitle2: "Hot Products",
@@ -32,6 +35,7 @@ const HeroSlider = () => {
     },
     {
       image: "/images/img4.png",
+      mobileImage: "/images/image1.png",
       title: "PREMIUM SHOPPING",
       subtitle: "Luxury Experience",
       subtitle2: "Unbeatable Prices",
@@ -43,7 +47,7 @@ const HeroSlider = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 8000); // تغيير كل 8 ثواني
+    }, 8000);
 
     return () => clearInterval(timer);
   }, [slides.length]);
@@ -66,7 +70,15 @@ const HeroSlider = () => {
               <button className={styles.shop}>{slide.buttonText}</button>
             </div>
           </div>
-          <img src={slide.image} alt={`Slide ${index + 1}`} />
+          
+          {/* صور متجاوبة - هاتف / ديسكتوب */}
+          <picture>
+            <source 
+              media="(max-width: 48rem)" 
+              srcSet={slide.mobileImage} 
+            />
+            <img src={slide.image} alt={`Slide ${index + 1}`} />
+          </picture>
         </div>
       ))}
       
