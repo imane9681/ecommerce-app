@@ -25,13 +25,16 @@ import {
   FaInstagram,
   FaYoutube,
   FaUserCircle,
-  FaStore
+  FaStore,
+  FaTimesCircle
 } from 'react-icons/fa';
 import styles from './Header.module.css';
 
 const Header = () => {
   const { getCartCount, getWishlistCount } = useCart();
   const location = useLocation();
+  const navigate = useNavigate();
+  
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [searchTerm, setSearchTerm] = useState('');
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
@@ -40,12 +43,16 @@ const Header = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('EN');
   const [selectedCurrency, setSelectedCurrency] = useState('USD');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const [wishlistBadgeBounce, setWishlistBadgeBounce] = useState(false);
   const [cartBadgeBounce, setCartBadgeBounce] = useState(false);
+  
   const dropdownRef = useRef(null);
   const languageRef = useRef(null);
   const currencyRef = useRef(null);
   const sidebarRef = useRef(null);
+  const mobileSearchRef = useRef(null);
+  const mobileSearchInputRef = useRef(null);
   
   const mainHeaderPages = ['/', '/login', '/register', '/products', '/blog', '/categories', '/contact', '/about'];
   const useMainHeader = mainHeaderPages.includes(location.pathname);
@@ -74,7 +81,6 @@ const Header = () => {
     { code: 'AED', symbol: 'د.إ', name: 'UAE Dirham' }
   ];
 
-  // مراقبة التغيرات في العدد لتطبيق التأثير
   const wishlistCount = getWishlistCount();
   const cartCount = getCartCount();
 
@@ -94,7 +100,38 @@ const Header = () => {
     }
   }, [cartCount]);
 
-  // إغلاق جميع dropdowns عند النقر خارجها
+  // إغلاق البحث الموبايل عند الضغط خارجها
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (mobileSearchRef.current && !mobileSearchRef.current.contains(event.target)) {
+        setIsMobileSearchOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  // منع التمرير عند فتح البحث الموبايل
+  useEffect(() => {
+    if (isMobileSearchOpen) {
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        if (mobileSearchInputRef.current) {
+          mobileSearchInputRef.current.focus();
+        }
+      }, 300);
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileSearchOpen]);
+
+  // إغلاق dropdowns عند النقر خارجها
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -154,29 +191,37 @@ const Header = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const navigate = useNavigate();
+  const toggleMobileSearch = () => {
+    setIsMobileSearchOpen(!isMobileSearchOpen);
+  };
+
+  const closeMobileSearch = () => {
+    setIsMobileSearchOpen(false);
+  };
+
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
+  };
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
     setIsCategoryOpen(false);
 
-    // If user selects 'All Categories', navigate to /products without category filter
     if (!category || category === 'All Categories') {
       navigate('/products');
       return;
     }
 
-    // navigate to products page with category param (lowercased)
     const categoryParam = category.toLowerCase();
     const params = new URLSearchParams();
     params.set('category', categoryParam);
 
-    // include existing search term if present
     if (searchTerm && searchTerm.trim()) {
       params.set('search', searchTerm.trim());
     }
 
     navigate(`/products?${params.toString()}`);
+    closeMobileSearch();
   };
 
   const handleLanguageSelect = (language) => {
@@ -187,10 +232,6 @@ const Header = () => {
   const handleCurrencySelect = (currency) => {
     setSelectedCurrency(currency.code);
     setIsCurrencyOpen(false);
-  };
-
-  const closeSidebar = () => {
-    setIsSidebarOpen(false);
   };
 
   const handleSearchSubmit = (event) => {
@@ -207,6 +248,36 @@ const Header = () => {
     }
 
     navigate(`/products${params.toString() ? `?${params.toString()}` : ''}`);
+    closeMobileSearch();
+  };
+
+  const handleMobileSearchSubmit = (event) => {
+    event.preventDefault();
+    const trimmedSearch = searchTerm.trim();
+    const params = new URLSearchParams();
+
+    if (trimmedSearch) {
+      params.set('search', trimmedSearch);
+    }
+
+    if (selectedCategory && selectedCategory !== 'All Categories') {
+      params.set('category', selectedCategory.toLowerCase());
+    }
+
+    navigate(`/products${params.toString() ? `?${params.toString()}` : ''}`);
+    closeMobileSearch();
+  };
+
+  const clearSearch = () => {
+    setSearchTerm('');
+    if (mobileSearchInputRef.current) {
+      mobileSearchInputRef.current.focus();
+    }
+  };
+
+  // تحديد الرابط النشط في الـ Bottom Nav
+  const isActive = (path) => {
+    return location.pathname === path ? styles.active : '';
   };
 
   return (
@@ -224,7 +295,7 @@ const Header = () => {
             <span>Shop</span>
           </Link>
 
-          {/* Navigation */}
+          {/* Navigation - Desktop */}
           <nav className={styles.nav}>
             <Link to="/" className={styles.navLink}>Home</Link>
             <Link to="/products" className={styles.navLink}>Products</Link>
@@ -234,7 +305,7 @@ const Header = () => {
             <Link to="/contact" className={styles.navLink}>Contact</Link>
           </nav>
 
-          {/* Search Bar */}
+          {/* Search Bar - Desktop */}
           <div className={styles.searchSection}>
             <div className={styles.searchContainer} ref={dropdownRef}>
               <div 
@@ -277,7 +348,7 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Language and Currency */}
+          {/* Language and Currency - Desktop */}
           <div className={styles.languageCurrency}>
             <div className={styles.dropdownWrapper} ref={languageRef}>
               <div 
@@ -333,9 +404,19 @@ const Header = () => {
             </div>
           </div>
 
-          {/* User Actions */}
+          {/* User Actions - الموبايل: بحث + سلة فقط */}
           <div className={styles.actions}>
-            <Link to="/wishlist" className={styles.icon}>
+            {/* أيقونة البحث للموبايل */}
+            <button 
+              className={`${styles.mobileSearchBtn} ${isMobileSearchOpen ? styles.active : ''}`}
+              onClick={toggleMobileSearch}
+              aria-label="Search"
+            >
+              <FaSearch />
+            </button>
+
+            {/* أيقونة القلب - تظهر فقط في الديسكتوب */}
+            <Link to="/wishlist" className={`${styles.icon} ${styles.desktopOnly}`}>
               <FaHeart />
               {wishlistCount > 0 && (
                 <span className={`${styles.wishlistCount} ${wishlistBadgeBounce ? styles.bounce : ''} ${wishlistCount > 9 ? styles.moreThanNine : ''}`}>
@@ -344,10 +425,12 @@ const Header = () => {
               )}
             </Link>
 
-            <Link to="/login" className={styles.icon}>
+            {/* أيقونة الحساب - تظهر فقط في الديسكتوب */}
+            <Link to="/login" className={`${styles.icon} ${styles.desktopOnly}`}>
               <FaUser />
             </Link>
 
+            {/* أيقونة السلة - تظهر في الكل */}
             <Link to="/cart" className={styles.cart}>
               <FaShoppingCart />
               {cartCount > 0 && (
@@ -359,6 +442,79 @@ const Header = () => {
           </div>
         </div>
       </header>
+
+      {/* ===== Mobile Search Overlay ===== */}
+      <div className={`${styles.mobileSearchOverlay} ${isMobileSearchOpen ? styles.open : ''}`}>
+        <div className={styles.mobileSearchContainer} ref={mobileSearchRef}>
+          <div className={styles.mobileSearchHeader}>
+            <div className={styles.mobileSearchLogo}>
+              <FaStore className={styles.mobileSearchLogoIcon} />
+              <span>Search</span>
+            </div>
+            <button 
+              className={styles.mobileSearchClose}
+              onClick={closeMobileSearch}
+              aria-label="Close search"
+            >
+              <FaTimes />
+            </button>
+          </div>
+
+          <form onSubmit={handleMobileSearchSubmit} className={styles.mobileSearchForm}>
+            <div className={styles.mobileSearchInputWrapper}>
+              <FaSearch className={styles.mobileSearchInputIcon} />
+              <input
+                ref={mobileSearchInputRef}
+                type="text"
+                placeholder="Search for products..."
+                className={styles.mobileSearchInput}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              {searchTerm && (
+                <button 
+                  type="button"
+                  className={styles.mobileSearchClear}
+                  onClick={clearSearch}
+                  aria-label="Clear search"
+                >
+                  <FaTimesCircle />
+                </button>
+              )}
+            </div>
+            <button type="submit" className={styles.mobileSearchSubmit}>
+              <FaSearch />
+            </button>
+          </form>
+
+          <div className={styles.mobileSearchCategories}>
+            <span className={styles.mobileSearchCategoriesTitle}>Popular Categories</span>
+            <div className={styles.mobileSearchCategoriesList}>
+              {categories.slice(0, 5).map((category, index) => (
+                <button
+                  key={index}
+                  className={styles.mobileSearchCategoryItem}
+                  onClick={() => {
+                    handleCategorySelect(category);
+                    closeMobileSearch();
+                  }}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.mobileSearchRecent}>
+            <span className={styles.mobileSearchRecentTitle}>Recent Searches</span>
+            <div className={styles.mobileSearchRecentList}>
+              <span className={styles.mobileSearchRecentItem}>Summer collection</span>
+              <span className={styles.mobileSearchRecentItem}>Electronics</span>
+              <span className={styles.mobileSearchRecentItem}>Fashion</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* ===== Sidebar للموبايل ===== */}
       <div className={`${styles.sidebarOverlay} ${isSidebarOpen ? styles.open : ''}`} onClick={closeSidebar}></div>
@@ -374,7 +530,6 @@ const Header = () => {
           </button>
         </div>
 
-        {/* روابط التنقل */}
         <nav className={styles.sidebarNav}>
           <Link to="/" className={styles.sidebarNavLink} onClick={closeSidebar}>
             <FaHome /> Home
@@ -395,7 +550,6 @@ const Header = () => {
 
         <div className={styles.sidebarDivider}></div>
 
-        {/* روابط سريعة */}
         <div className={styles.sidebarQuickLinks}>
           <h4>Quick Links</h4>
           <Link to="/wishlist" className={styles.sidebarQuickLink} onClick={closeSidebar}>
@@ -417,7 +571,6 @@ const Header = () => {
 
         <div className={styles.sidebarDivider}></div>
 
-        {/* معلومات الاتصال */}
         <div className={styles.sidebarContact}>
           <h4>Contact Us</h4>
           <p><FaPhone /> +1 (607) 936-8058</p>
@@ -425,7 +578,6 @@ const Header = () => {
           <p><FaMapMarkerAlt /> 419 State 414 Rte, NY</p>
         </div>
 
-        {/* روابط التواصل الاجتماعي */}
         <div className={styles.sidebarSocial}>
           <a href="#" className={styles.sidebarSocialLink}><FaFacebookF /></a>
           <a href="#" className={styles.sidebarSocialLink}><FaTwitter /></a>
@@ -433,6 +585,36 @@ const Header = () => {
           <a href="#" className={styles.sidebarSocialLink}><FaYoutube /></a>
         </div>
       </aside>
+
+      {/* ===== Bottom Navigation Bar (للموبايل فقط) ===== */}
+      <nav className={styles.bottomNav}>
+        <Link to="/" className={`${styles.bottomNavLink} ${isActive('/')}`}>
+          <FaHome className={styles.bottomNavIcon} />
+          <span className={styles.bottomNavLabel}>Home</span>
+        </Link>
+
+        <Link to="/wishlist" className={`${styles.bottomNavLink} ${isActive('/wishlist')}`}>
+          <div className={styles.bottomNavIconWrapper}>
+            <FaHeart className={styles.bottomNavIcon} />
+            {wishlistCount > 0 && (
+              <span className={`${styles.bottomNavBadge} ${wishlistBadgeBounce ? styles.bounce : ''}`}>
+                {wishlistCount > 99 ? '99+' : wishlistCount}
+              </span>
+            )}
+          </div>
+          <span className={styles.bottomNavLabel}>Wishlist</span>
+        </Link>
+
+        <Link to="/categories" className={`${styles.bottomNavLink} ${isActive('/categories')}`}>
+          <FaStore className={styles.bottomNavIcon} />
+          <span className={styles.bottomNavLabel}>Categories</span>
+        </Link>
+
+        <Link to="/login" className={`${styles.bottomNavLink} ${isActive('/login') || isActive('/register') ? styles.active : ''}`}>
+          <FaUserCircle className={styles.bottomNavIcon} />
+          <span className={styles.bottomNavLabel}>Account</span>
+        </Link>
+      </nav>
     </>
   );
 };

@@ -27,7 +27,8 @@ import {
   FaChevronRight,
   FaEye,
   FaChevronDown,
-  FaShieldAlt
+  FaShieldAlt,
+  FaTimes
 } from 'react-icons/fa';
 
 // مكون Dropdown المخصص
@@ -97,6 +98,7 @@ const ProductsPage = () => {
   const [sortOrder, setSortOrder] = useState('default');
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const itemsPerPage = 12;
 
   // تعريف البيانات قبل استخدامها
@@ -127,6 +129,15 @@ const ProductsPage = () => {
     { value: 'featured', label: 'Featured', icon: <FaShoppingBag /> },
     { value: 'bestseller', label: 'Best Seller', icon: <FaCheckCircle /> }
   ];
+
+  // دوال الفلتر
+  const toggleFilter = () => {
+    setIsFilterOpen(!isFilterOpen);
+  };
+
+  const closeFilter = () => {
+    setIsFilterOpen(false);
+  };
 
   // قراءة الـ category من الرابط عند تحميل الصفحة
   useEffect(() => {
@@ -343,7 +354,7 @@ const ProductsPage = () => {
     currentPage * itemsPerPage
   );
 
-  // Active Filters - تعريفه بعد تعريف categories, brands, promotionsList
+  // Active Filters
   const activeFilters = [
     ...selectedCategories.map(cat => ({ 
       type: 'category', 
@@ -394,7 +405,7 @@ const ProductsPage = () => {
       <section className={styles.promoBanner}>
         <div className={styles.container}>
           <div className={styles.bannerContent}>
-            <h2> Winter Sale - Up to 60% OFF</h2>
+            <h2>Winter Sale - Up to 60% OFF</h2>
             <p>Limited time offers on selected items • Free shipping on orders over $50</p>
             <button className={styles.shopNowBtn}>
               <FaShoppingCart style={{ marginRight: '8px' }} />
@@ -407,7 +418,7 @@ const ProductsPage = () => {
       {/* منطقة الفلاتر والمنتجات */}
       <section className={styles.section} id="products">
         <div className={styles.mainContainer}>
-          {/* الفلتر الجانبي */}
+          {/* ===== فلتر الحاسوب (شريط جانبي) ===== */}
           <aside className={styles.filterSidebar}>
             <div className={styles.filterHeader}>
               <h3><FaFilter style={{ color: '#fdb673' }} />Filter Options</h3>
@@ -438,8 +449,7 @@ const ProductsPage = () => {
             {/* By Brands */}
             <div className={styles.filterGroup}>
               <div className={styles.filterGroupTitle}>
-                <FaShoppingBag />
-                By Brands
+                <FaShoppingBag /> By Brands
               </div>
               <div className={styles.filterOptions}>
                 {brands.map(brand => (
@@ -461,8 +471,7 @@ const ProductsPage = () => {
             {/* Price */}
             <div className={styles.filterGroup}>
               <div className={styles.filterGroupTitle}>
-                <FaDollarSign />
-                Price
+                <FaDollarSign /> Price
               </div>
               <div className={styles.priceInputs}>
                 <input
@@ -488,8 +497,7 @@ const ProductsPage = () => {
             {/* Review */}
             <div className={styles.filterGroup}>
               <div className={styles.filterGroupTitle}>
-                <FaStar style={{ color: '#ffc107' }} />
-                Review
+                <FaStar style={{ color: '#ffc107' }} /> Review
               </div>
               <div className={styles.filterOptions}>
                 {[5, 4, 3, 2, 1].map(rating => (
@@ -516,8 +524,7 @@ const ProductsPage = () => {
             {/* By Promotions */}
             <div className={styles.filterGroup}>
               <div className={styles.filterGroupTitle}>
-                <FaFire style={{ color: '#ff6b35' }} />
-                By Promotions
+                <FaFire style={{ color: '#ff6b35' }} /> By Promotions
               </div>
               <div className={styles.filterOptions}>
                 {promotionsList.map(promotion => (
@@ -539,8 +546,7 @@ const ProductsPage = () => {
             {/* Availability */}
             <div className={styles.filterGroup}>
               <div className={styles.filterGroupTitle}>
-                <FaCheckCircle />
-                Availability
+                <FaCheckCircle /> Availability
               </div>
               <div className={styles.filterOptions}>
                 <label className={styles.filterOption}>
@@ -591,16 +597,26 @@ const ProductsPage = () => {
             )}
           </aside>
 
-          {/* محتوى المنتجات */}
+          {/* ===== محتوى المنتجات ===== */}
           <div className={styles.productsContent}>
             {/* شريط النتائج */}
             <div className={styles.resultsBar}>
               <span className={styles.resultsCount}>
                 Showing {displayProducts.length} of {filteredProducts.length} products
               </span>
-              <div className={styles.sortOptions}>
+              
+              {/* ===== CustomSortDropdown - يظهر في الحاسوب ===== */}
+              <div className={styles.sortWrapper}>
                 <CustomSortDropdown sortOrder={sortOrder} setSortOrder={setSortOrder} />
               </div>
+            </div>
+
+            {/* ===== صف الفلتر والترتيب - يظهر فقط في الهاتف ===== */}
+            <div className={styles.filterSortRow}>
+              <button className={styles.filterToggleBtn} onClick={toggleFilter}>
+                <FaFilter /> Filter
+              </button>
+              <CustomSortDropdown sortOrder={sortOrder} setSortOrder={setSortOrder} />
             </div>
 
             {/* Active Filters */}
@@ -615,7 +631,7 @@ const ProductsPage = () => {
                         onClick={() => removeFilter(filter.type, filter.value)}
                         className={styles.removeFilterBtn}
                       >
-                    ×
+                        ×
                       </button>
                     </span>
                   ))}
@@ -701,6 +717,192 @@ const ProductsPage = () => {
         </div>
       </section>
 
+      {/* ===== فلتر الموبايل (Overlay + Drawer) ===== */}
+      <div className={`${styles.filterOverlay} ${isFilterOpen ? styles.open : ''}`} onClick={closeFilter}></div>
+
+      <div className={`${styles.filterDrawer} ${isFilterOpen ? styles.open : ''}`}>
+        <div className={styles.filterDrawerHeader}>
+          <h3><FaFilter /> Filter Options</h3>
+          <button className={styles.filterDrawerClose} onClick={closeFilter}>
+            <FaTimes />
+          </button>
+        </div>
+
+        {/* By Categories */}
+        <div className={styles.filterGroup}>
+          <div className={styles.filterGroupTitle}>
+            <FaTags />By Categories 
+          </div>
+          <div className={styles.filterOptions}>
+            {categories.map(category => (
+              <label key={category.value} className={styles.filterOption}>
+                <input
+                  type="checkbox"
+                  className={styles.filterCheckbox}
+                  checked={selectedCategories.includes(category.value)}
+                  onChange={() => handleCategoryChange(category.value)}
+                />
+                <span className={styles.filterLabel}>
+                  {category.icon} {category.label}
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* By Brands */}
+        <div className={styles.filterGroup}>
+          <div className={styles.filterGroupTitle}>
+            <FaShoppingBag /> By Brands
+          </div>
+          <div className={styles.filterOptions}>
+            {brands.map(brand => (
+              <label key={brand.value} className={styles.filterOption}>
+                <input
+                  type="checkbox"
+                  className={styles.filterCheckbox}
+                  checked={selectedBrands.includes(brand.value)}
+                  onChange={() => handleBrandChange(brand.value)}
+                />
+                <span className={styles.filterLabel}>
+                  {brand.icon} {brand.label}
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Price */}
+        <div className={styles.filterGroup}>
+          <div className={styles.filterGroupTitle}>
+            <FaDollarSign /> Price
+          </div>
+          <div className={styles.priceInputs}>
+            <input
+              type="number"
+              className={styles.priceInput}
+              placeholder="Min"
+              value={priceRange.min}
+              onChange={(e) => handlePriceChange('min', e.target.value)}
+              min="0"
+            />
+            <span className={styles.priceSeparator}>-</span>
+            <input
+              type="number"
+              className={styles.priceInput}
+              placeholder="Max"
+              value={priceRange.max}
+              onChange={(e) => handlePriceChange('max', e.target.value)}
+              min="0"
+            />
+          </div>
+        </div>
+
+        {/* Review */}
+        <div className={styles.filterGroup}>
+          <div className={styles.filterGroupTitle}>
+            <FaStar style={{ color: '#ffc107' }} /> Review
+          </div>
+          <div className={styles.filterOptions}>
+            {[5, 4, 3, 2, 1].map(rating => (
+              <label key={rating} className={styles.filterOption}>
+                <input
+                  type="checkbox"
+                  className={styles.filterCheckbox}
+                  checked={selectedRatings.includes(rating)}
+                  onChange={() => handleRatingChange(rating)}
+                />
+                <span className={styles.filterLabel}>
+                  <div className={styles.starRatingItem}>
+                    <div className={styles.stars}>
+                      {renderStars(rating)}
+                    </div>
+                    <span className={styles.ratingCount}>({ratingCounts[rating]})</span>
+                  </div>
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* By Promotions */}
+        <div className={styles.filterGroup}>
+          <div className={styles.filterGroupTitle}>
+            <FaFire style={{ color: '#ff6b35' }} /> By Promotions
+          </div>
+          <div className={styles.filterOptions}>
+            {promotionsList.map(promotion => (
+              <label key={promotion.value} className={styles.filterOption}>
+                <input
+                  type="checkbox"
+                  className={styles.filterCheckbox}
+                  checked={promotions.includes(promotion.value)}
+                  onChange={() => handlePromotionChange(promotion.value)}
+                />
+                <span className={styles.filterLabel}>
+                  {promotion.icon} {promotion.label}
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Availability */}
+        <div className={styles.filterGroup}>
+          <div className={styles.filterGroupTitle}>
+            <FaCheckCircle /> Availability
+          </div>
+          <div className={styles.filterOptions}>
+            <label className={styles.filterOption}>
+              <input
+                type="radio"
+                name="availability-mobile"
+                className={styles.filterCheckbox}
+                checked={availability === 'all'}
+                onChange={() => setAvailability('all')}
+              />
+              <span className={styles.filterLabel}>
+                <FaShoppingBag /> All Products
+              </span>
+            </label>
+            <label className={styles.filterOption}>
+              <input
+                type="radio"
+                name="availability-mobile"
+                className={styles.filterCheckbox}
+                checked={availability === 'in-stock'}
+                onChange={() => setAvailability('in-stock')}
+              />
+              <span className={styles.filterLabel}>
+                <FaCheckCircle style={{ color: '#28a745' }} /> In Stock
+              </span>
+            </label>
+            <label className={styles.filterOption}>
+              <input
+                type="radio"
+                name="availability-mobile"
+                className={styles.filterCheckbox}
+                checked={availability === 'out-of-stock'}
+                onChange={() => setAvailability('out-of-stock')}
+              />
+              <span className={styles.filterLabel}>
+                <FaTimesCircle style={{ color: '#dc3545' }} /> Out of Stock
+              </span>
+            </label>
+          </div>
+        </div>
+
+        {/* Clear All Button */}
+        <div className={styles.filterDrawerActions}>
+          <button className={styles.applyBtn} onClick={() => { applyFilters(); closeFilter(); }}>
+            Apply Filters
+          </button>
+          <button className={styles.resetBtn} onClick={() => { clearAllFilters(); closeFilter(); }}>
+            Reset
+          </button>
+        </div>
+      </div>
+
       {/* بانر المنتجات المقترحة */}
       <section className={styles.suggestedBanner}>
         <div className={styles.container}>
@@ -765,7 +967,6 @@ const ProductsPage = () => {
           </div>
         </div>
       </section>
-
     </div>
   );
 };

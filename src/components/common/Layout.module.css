@@ -9,3 +9,22 @@
   flex: 1;
   overflow: visible;
 }
+
+/* ===== مساحة للـ Bottom Nav في الموبايل ===== */
+@media (max-width: 48rem) {
+  .mainContent {
+    padding-bottom: 5rem !important;
+  }
+}
+
+@media (max-width: 30rem) {
+  .mainContent {
+    padding-bottom: 4.5rem !important;
+  }
+}
+
+@media (max-width: 22.5rem) {
+  .mainContent {
+    padding-bottom: 4rem !important;
+  }
+}
