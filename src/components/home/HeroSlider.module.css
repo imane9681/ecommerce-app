@@ -234,17 +234,18 @@
 
 @media (max-width: 30rem) { /* 480px */
   .slider {
-    height: 100vh;
+    height: 85vh;
     min-height: 25rem; /* 400px */
   }
 
   .txt {
     left: 10%;
-    top:18%;
+    top:15%;
     gap: 0.3rem;
   }
   .badge {
     font-size: 0.75rem; /* 12px */
+    margin-bottom: -0.5rem; /* 8px */
   }
 
   .offer {

@@ -19,100 +19,103 @@ const Categories = () => {
     return products.filter(product => product.category === categoryId).length;
   };
 
-  // دالة لحساب عدد المنتجات المتوفرة لكل فئة
-  const getCategoryInStockCount = (categoryId) => {
-    return products.filter(product => product.category === categoryId && product.inStock).length;
+  // ===== ألوان دافئة متناسقة مع المشروع =====
+  const getCategoryColors = (index) => {
+    const colors = [
+      { icon: '#fdb673', bg: 'rgba(253, 182, 115, 0.12)' },   // برتقالي فاتح
+      { icon: '#ff9a3d', bg: 'rgba(255, 154, 61, 0.12)' },     // برتقالي غامق
+      { icon: '#f8a85e', bg: 'rgba(248, 168, 94, 0.12)' },     // برتقالي متوسط
+      { icon: '#ffb347', bg: 'rgba(255, 179, 71, 0.12)' },     // برتقالي شمسي
+      { icon: '#e8893a', bg: 'rgba(232, 137, 58, 0.12)' },     // برتقالي محروق
+      { icon: '#f5a623', bg: 'rgba(245, 166, 35, 0.12)' },     // ذهبي
+      { icon: '#ff8c42', bg: 'rgba(255, 140, 66, 0.12)' },     // برتقالي برتقالي
+      { icon: '#e8a84c', bg: 'rgba(232, 168, 76, 0.12)' },     // ذهبي فاتح
+      { icon: '#f7b731', bg: 'rgba(247, 183, 49, 0.12)' },     // ذهبي متوسط
+      { icon: '#d4893b', bg: 'rgba(212, 137, 59, 0.12)' },     // برتقالي غامق
+      { icon: '#fcb045', bg: 'rgba(252, 176, 69, 0.12)' },     // برتقالي دافئ
+      { icon: '#e8973a', bg: 'rgba(232, 151, 58, 0.12)' },     // كهرماني
+    ];
+    return colors[index % colors.length];
   };
 
   const categories = [
     {
       id: 'clothing',
       icon: <FaTshirt />,
-      name: "Clothing",
-      color: "#ec4899"
+      name: "Clothing"
     },
     {
       id: 'electronics',
       icon: <FaMobile />,
-      name: "Electronics",
-      color: "#4f46e5"
+      name: "Electronics"
     },
     {
       id: 'home',
       icon: <FaHome />,
-      name: "Home",
-      color: "#10b981"
+      name: "Home"
     },
     {
       id: 'beauty',
       icon: <FaSmile />,
-      name: "Beauty",
-      color: "#f97316"
+      name: "Beauty"
     },
     {
       id: 'sports',
       icon: <FaFutbol />,
-      name: "Sports",
-      color: "#ef4444"
+      name: "Sports"
     },
     {
       id: 'furniture',
       icon: <FaCouch />,
-      name: "Furniture",
-      color: "#f59e0b"
+      name: "Furniture"
     },
     {
       id: 'kitchen',
       icon: <FaUtensils />,
-      name: "Kitchen",
-      color: "#dc2626"
+      name: "Kitchen"
     },
     {
       id: 'baby',
       icon: <FaBaby />,
-      name: "Baby",
-      color: "#d946ef"
+      name: "Baby"
     },
     {
       id: 'jewelry',
       icon: <FaGem />,
-      name: "Jewelry",
-      color: "#eab308"
+      name: "Jewelry"
     },
     {
       id: 'books',
       icon: <FaBook />,
-      name: "Books",
-      color: "#8b5cf6"
+      name: "Books"
     },
     {
       id: 'games',
       icon: <FaGamepad />,
-      name: "Games",
-      color: "#84cc16"
+      name: "Games"
     },
     {
       id: 'automotive',
       icon: <FaCar />,
-      name: "Automotive",
-      color: "#64748b"
+      name: "Automotive"
     }
   ];
 
-  // حساب عدد النقاط بناءً على عدد الفئات وعرض الحاوية
+  // حساب عدد النقاط
   const calculateTotalDots = () => {
     const container = scrollContainerRef.current;
-    if (!container) return 3;
+    if (!container) return 4;
     
     const containerWidth = container.clientWidth;
-    const categoryCardWidth = 200;
+    const isMobile = window.innerWidth <= 480;
+    const categoryCardWidth = isMobile ? 80 : 200;
     const visibleCategories = Math.floor(containerWidth / categoryCardWidth);
     const totalDots = Math.ceil(categories.length / visibleCategories);
     
     return Math.max(totalDots, 1);
   };
 
-  const [totalDots, setTotalDots] = useState(3);
+  const [totalDots, setTotalDots] = useState(4);
 
   useEffect(() => {
     const updateTotalDots = () => {
@@ -129,7 +132,8 @@ const Categories = () => {
 
   const scroll = (direction) => {
     const container = scrollContainerRef.current;
-    const scrollAmount = 300;
+    const isMobile = window.innerWidth <= 480;
+    const scrollAmount = isMobile ? 200 : 300;
     
     if (container) {
       const newScrollLeft = direction === 'left' 
@@ -153,7 +157,7 @@ const Categories = () => {
     if (container) {
       setShowLeftArrow(container.scrollLeft > 0);
       setShowRightArrow(
-        container.scrollLeft < container.scrollWidth - container.clientWidth
+        container.scrollLeft < container.scrollWidth - container.clientWidth - 10
       );
     }
   };
@@ -218,44 +222,37 @@ const Categories = () => {
             <div className={styles.categoriesScroll}>
               {categories.map((category, index) => {
                 const productCount = getCategoryProductCount(category.id);
-                const inStockCount = getCategoryInStockCount(category.id);
+                const colors = getCategoryColors(index);
                 
                 return (
-                  <div key={index} className={styles.categoryCard}>
+                  <Link 
+                    to={`/products?category=${category.id}`}
+                    key={index} 
+                    className={styles.categoryCard}
+                  >
                     <div 
-                      className={styles.categoryIcon}
-                      style={{ backgroundColor: `${category.color}15` }}
+                      className={styles.categoryCircle}
+                      style={{ 
+                        background: colors.bg,
+                        border: `0.125rem solid ${colors.icon}40`
+                      }}
                     >
                       <div 
-                        className={styles.iconWrapper}
-                        style={{ color: category.color }}
+                        className={styles.categoryIcon}
+                        style={{ color: colors.icon }}
                       >
                         {category.icon}
                       </div>
                     </div>
                     
-                    <div className={styles.categoryContent}>
-                      <h3 className={styles.categoryName}>{category.name}</h3>
-                      <p className={styles.categoryItems}>
-                        {productCount} products • {inStockCount} in stock
-                      </p>
+                    <div className={styles.categoryName}>
+                      {category.name}
                     </div>
                     
-                    <Link 
-                      to={`/products?category=${category.id}`}
-                      className={styles.shopButton}
-                      onClick={() => {
-                        setTimeout(() => {
-                          const productsSection = document.getElementById('products');
-                          if (productsSection) {
-                            productsSection.scrollIntoView({ behavior: 'smooth' });
-                          }
-                        }, 300);
-                      }}
-                    >
-                      Shop
-                    </Link>
-                  </div>
+                    <div className={styles.categoryCount}>
+                      {productCount} items
+                    </div>
+                  </Link>
                 );
               })}
             </div>

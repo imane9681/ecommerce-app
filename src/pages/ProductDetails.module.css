@@ -1,4 +1,4 @@
-/* ProductDetails.module.css - التصميم الأصلي كاملاً + تجاوب */
+/* ProductDetails.module.css - التصميم الأصلي كاملاً + تجاوب محسن للهاتف */
 
 /* General Styles */
 .productPage {
@@ -2985,221 +2985,176 @@
   color: #3b2e1e;
 }
 
-/* ===== RESPONSIVE - فقط تجاوب ===== */
+/* ======================================== */
+/* ===== تصميم خاص للهاتف ===== */
+/* ======================================== */
 
-@media (max-width: 75rem) { /* 1200px */
-  .purchaseFeatures {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 48rem) {
+  .productPage {
+    padding: 5rem 0.75rem 2rem 0.75rem;
   }
 
-  .fbtContainer {
-    grid-template-columns: 1fr;
+  /* ===== Breadcrumb ===== */
+  .breadcrumb {
+    padding: 0.625rem 0.9375rem;
+    font-size: 0.75rem;
+    gap: 0.375rem;
+    border-left-width: 0.1875rem;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    white-space: nowrap;
   }
-}
 
-@media (max-width: 64rem) { /* 1024px */
+  .breadcrumbItem {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .breadcrumbSeparator {
+    font-size: 0.6rem;
+  }
+
+  .currentPage {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    max-width: 8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ===== Main Container - عمود واحد ===== */
   .productContainer {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 1.5rem;
+    padding: 0;
+    margin-bottom: 3rem;
+  }
+
+  /* ===== Image Gallery ===== */
+  .productGalleryWrapper {
+    width: 100%;
   }
 
   .productGallery {
-    position: sticky;
-    top: 100px;
-    max-height: calc(100vh - 120px);
+    position: relative;
+    top: 0;
+    max-height: none;
+    overflow: visible;
   }
 
   .mainImage {
     min-width: 100%;
+    height: 18.75rem;
+    border-radius: 0.9375rem;
   }
 
-  .modalBody {
-    grid-template-columns: 1fr;
-    max-height: 80vh;
+  .mainImage img {
+    width: 90%;
+    height: 90%;
   }
 
-  .customerPhotosGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 48rem) { /* 768px */
-  .productPage {
-    padding: 4rem 1.5rem 2rem;
+  .productBadges {
+    top: 0.75rem;
+    left: 0.75rem;
+    gap: 0.5rem;
   }
 
-  .productContainer {
-    padding: 1.25rem;
-    gap: 2rem;
+  .discountBadge,
+  .newBadge,
+  .bestsellerBadge {
+    padding: 0.3125rem 0.75rem;
+    font-size: 0.7rem;
+    border-radius: 1.25rem;
   }
 
-  .mainImage {
-    height: 25rem;
-    min-width: 100%;
+  .imageControls {
+    top: 0.75rem;
+    right: 0.75rem;
+    gap: 0.375rem;
   }
 
-  .productTitle {
-    font-size: 2.2rem;
+  .imageControlBtn {
+    width: 2.1875rem;
+    height: 2.1875rem;
+    font-size: 0.8rem;
+    padding: 0.5rem;
   }
 
-  .actionButtons {
-    grid-template-columns: 1fr;
-  }
-
-  .purchaseFeatures {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    padding: 1.5625rem;
-  }
-
-  .featuresTitle {
-    font-size: 1.8rem;
-  }
-
-  .tabHeaders {
-    flex-direction: column;
-  }
-
-  .specsGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .countdownTimer {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.9375rem;
-  }
-
-  .timerDisplay {
-    justify-content: center;
-  }
-
-  .timerUnit {
-    min-width: 3.75rem;
-    padding: 0.5rem 0.75rem;
-  }
-
-  .frequentlyBought {
-    padding: 1.875rem 1.25rem;
-  }
-
-  .fbtTitle {
-    font-size: 2rem;
-    flex-direction: column;
+  .thumbnailGallery {
     gap: 0.625rem;
-  }
-
-  .fbtBundleItem {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .fbtBundleCard {
-    width: 100%;
-  }
-
-  .fbtBenefits {
-    flex-wrap: wrap;
-  }
-
-  .fbtPlusSign,
-  .fbtEqualsSign {
-    margin: 1.25rem auto;
-  }
-
-  .customerPhotosSection {
-    padding: 1.875rem 1.25rem;
-  }
-
-  .customerPhotosTitle {
-    font-size: 2rem;
-    flex-direction: column;
-    gap: 0.625rem;
-  }
-
-  .customerPhotosGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .photosStats {
-    flex-wrap: wrap;
-    gap: 1.25rem;
-  }
-
-  .uploadPhotoCTA {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.25rem;
-  }
-
-  .fbtContainer {
-    padding: 0;
-  }
-
-  .fbtMainProduct {
-    flex-direction: column;
-  }
-
-  .fbtBundleProducts0 {
-    flex-direction: column;
-  }
-
-  .fbtTotalSection {
-    width: 100%;
-  }
-
-  .fbtTotalBox {
-    max-width: 100%;
-  }
-
-  .priceSection {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .discountPercentage {
-    margin-left: 0;
-  }
-
-  .stockBadge,
-  .outOfStockBadge {
-    margin-left: 0;
-    margin-top: 0.5rem;
-  }
-
-  .productTabs {
-    padding: 1.25rem;
-  }
-
-  .tabHeader {
-    padding: 0.75rem 1rem;
+    padding: 0.625rem 0;
   }
 
   .thumbnail {
     width: 4.375rem;
     height: 4.375rem;
-  }
-}
-
-@media (max-width: 30rem) { /* 480px */
-  .productPage {
-    padding: 4rem 1rem 2rem;
+    border-radius: 0.625rem;
   }
 
-  .productContainer {
-    padding: 0.9375rem;
+  .zoomHint {
+    display: none;
   }
 
-  .mainImage {
-    height: 18.75rem;
+  /* ===== Product Info ===== */
+  .productInfo {
+    padding: 0;
+  }
+
+  .brand {
+    font-size: 0.75rem;
   }
 
   .productTitle {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .stockBadge,
+  .outOfStockBadge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.75rem;
+    margin-left: 0;
+    margin-top: 0.5rem;
+    display: inline-flex;
+  }
+
+  .productTitle .stockBadge,
+  .productTitle .outOfStockBadge {
+    display: inline-flex;
+    margin-left: 0.5rem;
+    margin-top: 0;
+  }
+
+  .ratingSection {
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    width: 100%;
+  }
+
+  .stars {
+    gap: 0.125rem;
+  }
+
+  .starFilled,
+  .starEmpty {
+    font-size: 0.9375rem;
+  }
+
+  .ratingCount {
+    font-size: 0.8rem;
+  }
+
+  .reviewsLink {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
   }
 
   .priceSection {
-    padding: 0.625rem 0.9375rem;
+    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
   }
 
   .currentPrice {
@@ -3210,25 +3165,114 @@
     font-size: 1.1rem;
   }
 
-  .addToCartBtn,
-  .buyNowBtn {
-    padding: 1rem 1.25rem;
-    font-size: 1rem;
+  .discountPercentage {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.625rem;
+    margin-left: 0;
+  }
+
+  .productDescription {
+    font-size: 0.85rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-left-width: 0.1875rem;
+  }
+
+  /* ===== Color & Size ===== */
+  .variantTitle {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .selectedColorText,
+  .selectedSizeText {
+    font-size: 0.8rem;
+    padding: 0.125rem 0.5rem;
+  }
+
+  .colorOptions {
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .colorOption {
-    width: 2.1875rem;
-    height: 2.1875rem;
+    width: 2.375rem;
+    height: 2.375rem;
+  }
+
+  .colorCheckmark {
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: 0.7rem;
+  }
+
+  .sizeOptions {
+    gap: 0.375rem;
+    margin-bottom: 1.5rem;
   }
 
   .sizeOption {
-    min-width: 3.4375rem;
+    min-width: 3.125rem;
+    padding: 0.375rem 0.375rem;
+    border-radius: 0.5rem;
+  }
+
+  .sizeName {
+    font-size: 0.85rem;
+  }
+
+  .sizeDescription {
+    font-size: 0.625rem;
+  }
+
+  .sizeCheckmark {
+    font-size: 0.7rem;
+    top: 0.25rem;
+    right: 0.25rem;
+  }
+
+  .sizeGuideBtn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ===== Quantity Section ===== */
+  .quantitySection {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .quantityHeader {
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .quantityTitle {
+    font-size: 1rem;
+  }
+
+  .quantityHint {
+    font-size: 0.75rem;
+    padding: 0.125rem 0.5rem;
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .quantityControlModern {
+    gap: 0.375rem;
+    margin-bottom: 1rem;
+    justify-content: center;
   }
 
   .quantityBtnMinus,
   .quantityBtnPlus {
     width: 2.5rem;
     height: 2.5rem;
+    font-size: 0.85rem;
   }
 
   .quantityDisplay {
@@ -3240,47 +3284,183 @@
     font-size: 1.25rem;
   }
 
-  .productTabs {
-    padding: 0.9375rem;
+  .suggestionChips {
+    justify-content: center;
   }
 
-  .tabHeader {
+  .suggestionChip {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .bestValue {
+    font-size: 0.6rem;
+  }
+
+  /* ===== Price Calculator ===== */
+  .priceCalculator {
+    padding: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .priceCalculator h4 {
+    font-size: 1.1rem;
+  }
+
+  .calcRow {
+    font-size: 0.85rem;
+    padding: 0.5rem 0;
+  }
+
+  .totalValue {
+    font-size: 1.1rem;
+  }
+
+  .calcNote {
     font-size: 0.8rem;
-    padding: 0.625rem 0.75rem;
+    padding: 0.5rem 0.75rem;
   }
 
-  .tabContent {
-    padding: 0.625rem;
+  /* ===== Action Buttons ===== */
+  .actionButtons {
+    grid-template-columns: 1fr;
+    gap: 0.625rem;
+    margin-bottom: 1.5rem;
   }
 
-  .featuresTitle {
-    font-size: 1.4rem;
-    flex-direction: column;
-    gap: 0.5rem;
+  .addToCartBtn,
+  .buyNowBtn {
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    justify-content: center;
+    text-align: center;
+    min-width: auto;
   }
 
-  .thumbnail {
-    width: 3.75rem;
-    height: 3.75rem;
+  /* ===== Purchase Features ===== */
+  .purchaseFeatures {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    padding: 1rem;
+    margin: 2rem 0;
   }
 
   .featureCard {
-    padding: 1.25rem 0.9375rem;
+    padding: 1rem 0.75rem;
+    gap: 0.625rem;
   }
 
   .featureIcon {
-    width: 3.75rem;
-    height: 3.75rem;
-    font-size: 1.5rem;
+    width: 3.125rem;
+    height: 3.125rem;
+    font-size: 1.2rem;
   }
 
-  .fbtProductImage {
-    width: 9.375rem;
-    height: 9.375rem;
+  .featureTitle {
+    font-size: 0.9rem;
+  }
+
+  .featureDescription {
+    font-size: 0.75rem;
+  }
+
+  .featuresHeader {
+    margin-bottom: 0;
+  }
+
+  .featuresTitle {
+    font-size: 1.5rem;
+    gap: 0.5rem;
+  }
+
+  .featuresTitleIcon {
+    font-size: 1.3rem;
+  }
+
+  .featuresSubtitle {
+    font-size: 0.85rem;
+  }
+
+  /* ===== Frequently Bought Together ===== */
+  .frequentlyBought {
+    margin: 2rem 0;
+    padding: 1.25rem;
+    border-radius: 1rem;
+  }
+
+  .fbtHeader {
+    margin-bottom: 1.5rem;
+  }
+
+  .fbtTitle {
+    font-size: 1.5rem;
+    gap: 0.625rem;
+    flex-direction: column;
+  }
+
+  .fbtTitleIcon {
+    font-size: 1.3rem;
+  }
+
+  .fbtSubtitle {
+    font-size: 0.9rem;
+  }
+
+  .fbtContainer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .fbtMainProduct {
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .fbtProductCard {
+    max-width: 100%;
     padding: 1rem;
+  }
+
+  .fbtProductImage {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .fbtProductName {
+    font-size: 0.95rem;
+  }
+
+  .fbtProductPrice {
+    font-size: 1.1rem;
+  }
+
+  .fbtPlusSign {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+  }
+
+  .fbtBundleProducts0 {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .fbtBundleProducts {
+    gap: 0.75rem;
+  }
+
+  .fbtBundleItem {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.75rem;
+    gap: 0.625rem;
+  }
+
+  .fbtBundleCard {
+    width: 100%;
+    gap: 0.75rem;
   }
 
   .fbtBundleImage {
@@ -3288,22 +3468,323 @@
     height: 3.75rem;
   }
 
-  .showMoreButton {
-    min-width: 100%;
-    padding: 0.875rem 1.25rem;
+  .fbtBundleName {
+    font-size: 0.85rem;
+  }
+
+  .fbtBundlePrice {
+    font-size: 0.95rem;
+  }
+
+  .fbtEqualsSign {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+  }
+
+  .fbtTotalSection {
+    width: 100%;
+  }
+
+  .fbtTotalBox {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .fbtTotalTitle {
+    font-size: 1.1rem;
+  }
+
+  .fbtTotalPrice {
+    font-size: 1.4rem;
+  }
+
+  .fbtSavings {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .fbtBenefits {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .fbtBenefit {
+    flex: 1;
+    min-width: 4rem;
+  }
+
+  .fbtBenefit span {
+    font-size: 0.65rem;
+  }
+
+  .fbtAddAllButton {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+
+  .fbtFooter {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  /* ===== Tabs ===== */
+  .productTabs {
+    padding: 1rem;
+    margin-bottom: 3rem;
+    border-radius: 1rem;
+  }
+
+  .tabHeaders {
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.375rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tabHeader {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.8rem;
+    border-radius: 0.625rem;
+    gap: 0.375rem;
+    justify-content: flex-start;
+  }
+
+  .tabHeader.active::after {
+    width: 1.875rem;
+    height: 0.125rem;
+    bottom: 0.125rem;
+  }
+
+  .tabContent {
+    padding: 0.625rem;
+    font-size: 0.9rem;
+  }
+
+  .tabContent h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tabContent h3::after {
+    width: 2.5rem;
+    height: 0.125rem;
+  }
+
+  .specsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .specItem {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    flex-direction: column;
+    gap: 0.25rem;
+    border-left-width: 0.1875rem;
+  }
+
+  .featuresList li {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .ratingSummary {
+    padding: 1.25rem;
+  }
+
+  .ratingNumber {
+    font-size: 2.5rem;
+  }
+
+  .reviewCard {
+    padding: 1rem;
+  }
+
+  .reviewHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .reviewerInfo {
+    flex-wrap: wrap;
+  }
+
+  /* ===== Q&A ===== */
+  .qaList {
+    margin: 1rem 0;
+  }
+
+  .qaItem {
+    margin-bottom: 1rem;
+  }
+
+  .question,
+  .answer {
+    padding: 0.75rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .questionIcon,
+  .answerIcon {
     font-size: 1rem;
   }
 
-  .photoModalContent {
-    width: 95%;
+  .qaForm {
+    padding: 1rem;
+    margin-top: 1.5rem;
   }
 
-  .modalPhoto {
-    max-height: 18.75rem;
+  .qaFormActions {
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .askButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .qaNote {
+    font-size: 0.8rem;
+    justify-content: center;
+  }
+
+  /* ===== Customer Photos ===== */
+  .customerPhotosSection {
+    padding: 1.25rem;
+    margin: 2rem 0;
+    border-radius: 1rem;
+  }
+
+  .customerPhotosTitle {
+    font-size: 1.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .photosTitleIcon {
+    font-size: 1.3rem;
+  }
+
+  .customerPhotosSubtitle {
+    font-size: 0.9rem;
+  }
+
+  .photosStats {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .statNumber {
+    font-size: 1.5rem;
+  }
+
+  .customerPhotosGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .photoContainer {
+    height: 12.5rem;
+  }
+
+  .photoInfo {
+    padding: 0.75rem;
+  }
+
+  .customerInfo {
+    flex-wrap: wrap;
+  }
+
+  .customerName {
+    font-size: 0.9rem;
+  }
+
+  .photoComment {
+    font-size: 0.85rem;
+    min-height: 2.5rem;
+  }
+
+  .photoMeta {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .showMoreButton {
+    min-width: 100%;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+  }
+
+  .buttonSubtext {
+    font-size: 0.7rem;
+  }
+
+  .uploadPhotoCTA {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .uploadContent {
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .uploadIcon {
+    font-size: 2.5rem;
+  }
+
+  .uploadText h3 {
+    font-size: 1.3rem;
+  }
+
+  .uploadText p {
+    font-size: 0.85rem;
+  }
+
+  .uploadButton {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  /* ===== Photo Modal ===== */
+  .photoModalContent {
+    width: 95%;
+    max-height: 95vh;
+    border-radius: 1rem;
   }
 
   .modalBody {
+    grid-template-columns: 1fr;
     max-height: 85vh;
+  }
+
+  .modalPhotoContainer {
+    min-height: 15rem;
+    padding: 1rem;
+  }
+
+  .modalPhoto {
+    max-height: 15rem;
+  }
+
+  .photoNavigation {
+    padding: 0 0.5rem;
+  }
+
+  .navButton {
+    width: 2.1875rem;
+    height: 2.1875rem;
+    font-size: 1rem;
   }
 
   .modalInfo {
@@ -3317,49 +3798,166 @@
   .modalActions {
     margin-left: 0;
     width: 100%;
+    justify-content: flex-start;
   }
 
-  .breadcrumb {
-    padding: 0.625rem 0.9375rem;
-    font-size: 0.8rem;
+  .modalComment {
+    font-size: 0.95rem;
+    padding: 0.75rem;
+  }
+
+  .modalMeta {
     gap: 0.5rem;
   }
 
-  .breadcrumbItem {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.8rem;
+  .modalMetaItem {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.625rem;
   }
 
-  .currentPage {
+  /* ===== Related Products ===== */
+  .relatedProducts {
+    margin-top: 3rem;
+    padding: 1rem 0;
+  }
+
+  .sectionTitle {
+    font-size: 1.8rem;
+    gap: 0.5rem;
+  }
+
+  .sectionSubtitle {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  .productsGrid {
+    padding: 0;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .viewAllBtn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  /* ===== Countdown Timer ===== */
+  .countdownTimer {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .timerIcon {
+    font-size: 1.5rem;
+  }
+
+  .timerContent {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .timerText {
+    font-size: 0.85rem;
+  }
+
+  .timerUnit {
+    min-width: 3.125rem;
+    padding: 0.375rem 0.5rem;
+  }
+
+  .timerNumber {
+    font-size: 1.3rem;
+  }
+
+  .timerLabel {
+    font-size: 0.6rem;
+  }
+
+  .timerColon {
+    font-size: 1rem;
+  }
+
+  /* ===== Size Guide Modal ===== */
+  .sizeGuideContent {
+    width: 95%;
+    max-height: 85vh;
+  }
+
+  .sizeGuideHeader {
+    padding: 0.75rem 1rem;
+  }
+
+  .sizeGuideHeader h3 {
+    font-size: 1.1rem;
+  }
+
+  .sizeGuideBody {
+    padding: 1rem;
+  }
+
+  .sizeTable th,
+  .sizeTable td {
+    padding: 0.5rem 0.375rem;
+    font-size: 0.75rem;
+  }
+
+  .sizeGuideTips {
+    padding: 0.75rem;
+  }
+
+  .sizeGuideTips h4 {
+    font-size: 0.95rem;
+  }
+
+  .sizeGuideTips li {
     font-size: 0.8rem;
-    padding: 0.25rem 0.5rem;
   }
 }
 
-@media (max-width: 22.5rem) { /* 360px */
+/* ======================================== */
+/* ===== هاتف صغير جداً (480px) ===== */
+/* ======================================== */
+
+@media (max-width: 30rem) {
+  .productPage {
+    padding: 4.5rem 0.5rem 1.5rem 0.5rem;
+  }
+
   .mainImage {
     height: 15.625rem;
   }
 
   .productTitle {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   .currentPrice {
     font-size: 1.3rem;
   }
 
+  .originalPrice {
+    font-size: 1rem;
+  }
+
   .priceSection {
-    padding: 0.5rem 0.625rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .discountPercentage {
+    font-size: 0.65rem;
+    padding: 0.125rem 0.5rem;
   }
 
   .colorOption {
-    width: 1.875rem;
-    height: 1.875rem;
+    width: 2rem;
+    height: 2rem;
   }
 
   .sizeOption {
-    min-width: 2.8125rem;
+    min-width: 2.5rem;
     padding: 0.25rem 0.25rem;
   }
 
@@ -3368,13 +3966,13 @@
   }
 
   .sizeDescription {
-    font-size: 0.625rem;
+    font-size: 0.5625rem;
   }
 
   .quantityBtnMinus,
   .quantityBtnPlus {
-    width: 2.1875rem;
-    height: 2.1875rem;
+    width: 2.125rem;
+    height: 2.125rem;
     font-size: 0.75rem;
   }
 
@@ -3393,10 +3991,235 @@
     font-size: 0.85rem;
   }
 
+  .purchaseFeatures {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .featureCard {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .featureIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+
+  .featureTitle {
+    font-size: 0.75rem;
+  }
+
+  .featureDescription {
+    font-size: 0.65rem;
+  }
+
+  .featuresTitle {
+    font-size: 1.2rem;
+  }
+
+  .productsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .thumbnail {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
   .tabHeader {
     font-size: 0.7rem;
     padding: 0.5rem 0.5rem;
-    gap: 0.3125rem;
+    gap: 0.25rem;
+  }
+
+  .tabContent {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+
+  .tabContent h3 {
+    font-size: 1rem;
+  }
+
+  .fbtProductImage {
+    width: 6.25rem;
+    height: 6.25rem;
+  }
+
+  .fbtProductName {
+    font-size: 0.85rem;
+  }
+
+  .fbtProductPrice {
+    font-size: 1rem;
+  }
+
+  .fbtBundleImage {
+    width: 3.125rem;
+    height: 3.125rem;
+  }
+
+  .fbtBundleName {
+    font-size: 0.75rem;
+  }
+
+  .fbtBundlePrice {
+    font-size: 0.85rem;
+  }
+
+  .fbtTotalPrice {
+    font-size: 1.2rem;
+  }
+
+  .fbtAddAllButton {
+    font-size: 0.8rem;
+    padding: 0.625rem;
+  }
+
+  .customerPhotosTitle {
+    font-size: 1.2rem;
+  }
+
+  .photoContainer {
+    height: 10rem;
+  }
+
+  .showMoreButton {
+    padding: 0.625rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .showMoreIcon {
+    font-size: 1rem;
+  }
+
+  .uploadText h3 {
+    font-size: 1.1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.4rem;
+  }
+}
+
+/* ======================================== */
+/* ===== هاتف صغير جداً جداً (360px) ===== */
+/* ======================================== */
+
+@media (max-width: 22.5rem) {
+  .mainImage {
+    height: 12.5rem;
+  }
+
+  .productTitle {
+    font-size: 1.1rem;
+  }
+
+  .productTitle .stockBadge,
+  .productTitle .outOfStockBadge {
+    font-size: 0.55rem;
+    padding: 0.125rem 0.5rem;
+  }
+
+  .currentPrice {
+    font-size: 1.1rem;
+  }
+
+  .originalPrice {
+    font-size: 0.85rem;
+  }
+
+  .priceSection {
+    padding: 0.375rem 0.5rem;
+    gap: 0.375rem;
+  }
+
+  .discountPercentage {
+    font-size: 0.5625rem;
+    padding: 0.125rem 0.375rem;
+  }
+
+  .colorOption {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .colorCheckmark {
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.6rem;
+  }
+
+  .sizeOption {
+    min-width: 2.1875rem;
+    padding: 0.1875rem 0.1875rem;
+  }
+
+  .sizeName {
+    font-size: 0.6875rem;
+  }
+
+  .quantityBtnMinus,
+  .quantityBtnPlus {
+    width: 1.875rem;
+    height: 1.875rem;
+    font-size: 0.6875rem;
+  }
+
+  .quantityDisplay {
+    min-width: 2.8125rem;
+    height: 2.1875rem;
+  }
+
+  .quantityNumber {
+    font-size: 1rem;
+  }
+
+  .suggestionChip {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .addToCartBtn,
+  .buyNowBtn {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .purchaseFeatures {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.375rem;
+    padding: 0.5rem;
+  }
+
+  .featureCard {
+    padding: 0.5rem 0.375rem;
+  }
+
+  .featureIcon {
+    width: 2.1875rem;
+    height: 2.1875rem;
+    font-size: 0.875rem;
+  }
+
+  .featureTitle {
+    font-size: 0.6875rem;
+  }
+
+  .featureDescription {
+    font-size: 0.5625rem;
+  }
+
+  .featuresTitle {
+    font-size: 1rem;
+  }
+
+  .productsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.375rem;
   }
 
   .thumbnail {
@@ -3404,38 +4227,125 @@
     height: 3.125rem;
   }
 
-  .featuresTitle {
-    font-size: 1.2rem;
+  .tabHeader {
+    font-size: 0.625rem;
+    padding: 0.375rem 0.375rem;
   }
 
-  .featureCard {
-    padding: 0.9375rem 0.625rem;
+  .tabContent {
+    font-size: 0.75rem;
+    padding: 0.375rem;
   }
 
-  .featureIcon {
-    width: 3.125rem;
-    height: 3.125rem;
-    font-size: 1.25rem;
-  }
-
-  .fbtProductImage {
-    width: 7.5rem;
-    height: 7.5rem;
-  }
-
-  .fbtProductName {
+  .tabContent h3 {
     font-size: 0.9rem;
   }
 
-  .fbtProductPrice {
-    font-size: 1.1rem;
+  .fbtProductImage {
+    width: 5rem;
+    height: 5rem;
   }
 
-  .fbtBundleName {
+  .fbtProductName {
+    font-size: 0.75rem;
+  }
+
+  .fbtProductPrice {
     font-size: 0.85rem;
   }
 
+  .fbtBundleImage {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .fbtBundleName {
+    font-size: 0.6875rem;
+  }
+
   .fbtBundlePrice {
+    font-size: 0.75rem;
+  }
+
+  .fbtTotalPrice {
+    font-size: 1rem;
+  }
+
+  .fbtAddAllButton {
+    font-size: 0.7rem;
+    padding: 0.5rem;
+  }
+
+  .customerPhotosTitle {
+    font-size: 1rem;
+  }
+
+  .photoContainer {
+    height: 8.75rem;
+  }
+
+  .showMoreButton {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .buttonSubtext {
+    font-size: 0.6rem;
+  }
+
+  .uploadText h3 {
     font-size: 0.95rem;
+  }
+
+  .uploadText p {
+    font-size: 0.75rem;
+  }
+
+  .uploadButton {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.2rem;
+  }
+
+  .sectionSubtitle {
+    font-size: 0.75rem;
+  }
+
+  .viewAllBtn {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.875rem;
+  }
+
+  .breadcrumb {
+    font-size: 0.625rem;
+    padding: 0.375rem 0.625rem;
+  }
+
+  .breadcrumbItem {
+    font-size: 0.625rem;
+    padding: 0.125rem 0.375rem;
+  }
+
+  .currentPage {
+    font-size: 0.625rem;
+    padding: 0.125rem 0.375rem;
+    max-width: 5rem;
+  }
+
+  .sizeGuideContent {
+    width: 98%;
+  }
+
+  .sizeTable th,
+  .sizeTable td {
+    padding: 0.25rem 0.25rem;
+    font-size: 0.625rem;
+  }
+
+  .sizeGuideTips li {
+    font-size: 0.6875rem;
   }
 }

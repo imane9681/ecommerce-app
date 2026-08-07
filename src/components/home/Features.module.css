@@ -1,26 +1,30 @@
-/* Features.module.css - باستخدام rem + متجاوب */
+/* Features.module.css - تصميم شبكة للحاسوب + شريط للهاتف */
 
 .featuresSection {
-  padding: 5rem 2.5rem; /* 80px */
+  padding: 5rem 2.5rem;
 }
 
 .container {
-  max-width: 87.5rem; /* 1400px */
+  max-width: 87.5rem;
   margin: 0 auto;
-  padding: 0 1.25rem; /* 20px */
+  padding: 0 1.25rem;
 }
 
-.features {
+/* ======================================== */
+/* ===== تصميم الحاسوب (شبكة) ===== */
+/* ======================================== */
+
+.featuresDesktop {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 1.25rem; /* 20px */
+  gap: 1.25rem;
   justify-content: center;
 }
 
 .feat {
   background: rgb(255, 243, 234);
-  border-radius: 1.25rem; /* 20px */
-  padding: 1.875rem 0.9375rem; /* 30px 15px */
+  border-radius: 1.25rem;
+  padding: 1.875rem 0.9375rem;
   text-align: center;
   box-shadow: 0 0.3125rem 1.25rem rgba(255, 182, 193, 0.1);
   border: 0.0625rem solid rgba(252, 191, 134, 0.3);
@@ -35,14 +39,14 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 0.1875rem; /* 3px */
+  height: 0.1875rem;
   background: linear-gradient(90deg, #ff6b6b, #ffe3c8, #4ecdc4);
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
 
 .feat:hover {
-  transform: translateY(-0.5rem); /* -8px */
+  transform: translateY(-0.5rem);
   box-shadow: 0 0.9375rem 2.1875rem rgba(255, 182, 193, 0.15);
   border-color: #ffd1b6;
 }
@@ -52,15 +56,15 @@
 }
 
 .iconWrapper {
-  width: 4.375rem; /* 70px */
-  height: 4.375rem; /* 70px */
-  margin: 0 auto 1.25rem; /* 20px */
+  width: 4.375rem;
+  height: 4.375rem;
+  margin: 0 auto 1.25rem;
   background: linear-gradient(135deg, #ffe3c8, #ffe2b6);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.9375rem; /* 15px */
+  padding: 0.9375rem;
   transition: all 0.3s ease;
 }
 
@@ -70,7 +74,7 @@
 }
 
 .icon {
-  font-size: 1.875rem; /* 30px */
+  font-size: 1.875rem;
   color: #fdb673;
   transition: transform 0.3s ease;
 }
@@ -88,7 +92,7 @@
   font-size: 0.9rem;
   font-weight: 700;
   color: #48392d;
-  margin-bottom: 0.5rem; /* 8px */
+  margin-bottom: 0.5rem;
   line-height: 1.3;
   letter-spacing: 0.03125rem;
 }
@@ -101,97 +105,294 @@
   font-weight: 400;
 }
 
+/* ======================================== */
+/* ===== تصميم الهاتف (شريط أفقي) ===== */
+/* ======================================== */
+
+.featuresMobile {
+  display: none;
+}
+
+.mobileScrollWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.mobileScrollContainer {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0.5rem 0.25rem;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.mobileScrollContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.mobileFeaturesList {
+  display: flex;
+  gap: 1rem;
+  padding: 0.25rem 0.5rem;
+  min-width: max-content;
+}
+
+/* ===== بطاقات المميزات في الهاتف - أيقونة جنب العنوان ===== */
+.mobileFeat {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgb(255, 243, 234);
+  border-radius: 2.5rem;
+  padding: 0.75rem 1.5rem 0.75rem 1rem;
+  border: 0.0625rem solid rgba(252, 191, 134, 0.2);
+  transition: all 0.3s ease;
+  cursor: default;
+  flex-shrink: 0;
+  min-width: auto;
+}
+
+.mobileFeat:hover {
+  background: #fff5ec;
+  border-color: #fdb673;
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.375rem 1.25rem rgba(253, 182, 115, 0.15);
+}
+
+.mobileIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: linear-gradient(135deg, #ffe3c8, #ffe2b6);
+  border-radius: 50%;
+  font-size: 1.125rem;
+  color: #fdb673;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.mobileFeat:hover .mobileIcon {
+  transform: scale(1.05);
+  box-shadow: 0 0.25rem 0.9375rem rgba(253, 182, 115, 0.2);
+}
+
+.mobileTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #48392d;
+  letter-spacing: 0.03125rem;
+  white-space: nowrap;
+}
+
+/* ===== مؤشر التمرير (نقاط) ===== */
+.scrollIndicators {
+  display: none;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 0.25rem 0;
+}
+
+.scrollDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #e0d4cb;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.scrollDot.active {
+  background: #fdb673;
+  width: 1.5rem;
+  border-radius: 0.25rem;
+}
+
+/* ======================================== */
 /* ===== RESPONSIVE ===== */
+/* ======================================== */
 
-@media (max-width: 75rem) { /* 1200px */
-  .features {
+@media (max-width: 75rem) {
+  .featuresDesktop {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5625rem; /* 25px */
+    gap: 1.5625rem;
   }
 }
 
-@media (max-width: 48rem) { /* 768px */
+@media (max-width: 62rem) {
+  .featuresDesktop {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* ===== Tablet والهاتف ===== */
+@media (max-width: 48rem) {
   .featuresSection {
-    padding: 3.75rem 0; /* 60px */
+    padding: 2.5rem 0.75rem;
   }
 
-  .features {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem; /* 20px */
+  .container {
+    padding: 0 0.75rem;
   }
 
-  .feat {
-    padding: 1.5625rem 0.9375rem; /* 25px 15px */
+  /* ===== إخفاء تصميم الحاسوب ===== */
+  .featuresDesktop {
+    display: none !important;
   }
 
-  .iconWrapper {
-    width: 3.75rem; /* 60px */
-    height: 3.75rem; /* 60px */
-    margin-bottom: 0.9375rem; /* 15px */
+  /* ===== إظهار تصميم الهاتف ===== */
+  .featuresMobile {
+    display: block !important;
   }
 
-  .icon {
-    font-size: 1.5625rem; /* 25px */
+  /* ===== إظهار مؤشر التمرير ===== */
+  .scrollIndicators {
+    display: flex !important;
   }
 
-  .title {
-    font-size: 0.85rem;
+  /* ===== بطاقات الهاتف ===== */
+  .mobileFeat {
+    padding: 0.875rem 1.5rem 0.875rem 1.125rem;
+    gap: 0.75rem;
+    border-radius: 2.5rem;
   }
 
-  .description {
-    font-size: 0.75rem;
-  }
-}
-
-@media (max-width: 30rem) { /* 480px */
-  .features {
-    grid-template-columns: 1fr;
-    max-width: 20rem; /* 320px */
-    margin: 0 auto;
+  .mobileIcon {
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.25rem;
   }
 
-  .featuresSection {
-    padding: 2.5rem 0; /* 40px */
-  }
-
-  .feat {
-    padding: 1.25rem 0.9375rem; /* 20px 15px */
-  }
-
-  .iconWrapper {
-    width: 3.125rem; /* 50px */
-    height: 3.125rem; /* 50px */
-  }
-
-  .icon {
-    font-size: 1.25rem; /* 20px */
-  }
-}
-
-@media (max-width: 22.5rem) { /* 360px */
-  .features {
-    max-width: 100%;
-  }
-
-  .feat {
-    padding: 0.9375rem 0.625rem; /* 15px 10px */
-  }
-
-  .iconWrapper {
-    width: 2.8125rem; /* 45px */
-    height: 2.8125rem; /* 45px */
-    margin-bottom: 0.625rem; /* 10px */
-  }
-
-  .icon {
-    font-size: 1.125rem; /* 18px */
-  }
-
-  .title {
+  .mobileTitle {
     font-size: 0.8rem;
   }
 
-  .description {
-    font-size: 0.6875rem;
+  .mobileFeaturesList {
+    gap: 0.875rem;
+    padding: 0.25rem 0.75rem;
+  }
+}
+
+/* ===== هاتف صغير ===== */
+@media (max-width: 30rem) {
+  .featuresSection {
+    padding: 1rem 0.5rem;
+  }
+
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  .mobileFeat {
+    padding: 0.75rem 1.25rem 0.75rem 0.875rem;
+    gap: 0.625rem;
+    border-radius: 0.9rem;
+  }
+
+  .mobileIcon {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1rem;
+  }
+
+  .mobileTitle {
+    font-size: 0.7rem;
+  }
+
+  .mobileFeaturesList {
+    gap: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .scrollDot {
+    width: 0.4375rem;
+    height: 0.4375rem;
+  }
+
+  .scrollDot.active {
+    width: 1.25rem;
+  }
+}
+
+/* ===== هاتف صغير جداً ===== */
+@media (max-width: 22.5rem) {
+.featuresSection {
+    padding: 0.75rem 0.375rem;
+  }
+
+  .mobileFeat {
+    padding: 0.625rem 1rem 0.625rem 0.75rem;
+    gap: 0.5rem;
+    border-radius: 0.9rem;
+  }
+
+  .mobileIcon {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.875rem;
+  }
+
+  .mobileTitle {
+    font-size: 0.625rem;
+  }
+
+  .mobileFeaturesList {
+    gap: 0.625rem;
+    padding: 0.25rem 0.375rem;
+  }
+
+  .scrollDot {
+    width: 0.375rem;
+    height: 0.375rem;
+  }
+
+  .scrollDot.active {
+    width: 1rem;
+  }
+}
+
+/* ======================================== */
+/* ===== Tablet متوسط (إظهار تصميم الهاتف) ===== */
+/* ======================================== */
+
+@media (min-width: 30.0625rem) and (max-width: 48rem) {
+  .featuresDesktop {
+    display: none !important;
+  }
+
+  .featuresMobile {
+    display: block !important;
+  }
+
+  .mobileFeat {
+    padding: 1rem 2rem 1rem 1.25rem;
+    gap: 1rem;
+    border-radius: 3rem;
+  }
+
+  .mobileIcon {
+    width: 3.125rem;
+    height: 3.125rem;
+    font-size: 1.375rem;
+  }
+
+  .mobileTitle {
+    font-size: 0.9rem;
+  }
+
+  .mobileFeaturesList {
+    gap: 1.25rem;
+    padding: 0.25rem 1rem;
+  }
+
+  .scrollIndicators {
+    display: flex !important;
   }
 }

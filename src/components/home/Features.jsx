@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styles from './Features.module.css';
 // استيراد أيقونات React Icons
 import { FaShippingFast, FaHeadset, FaShieldAlt, FaExchangeAlt, FaGift, FaAward } from 'react-icons/fa';
@@ -37,10 +37,38 @@ const Features = () => {
     }
   ];
 
+  const scrollContainerRef = useRef(null);
+  const [activeDot, setActiveDot] = useState(0);
+
+  const updateActiveDot = () => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const scrollLeft = container.scrollLeft;
+    const itemWidth = container.scrollWidth / features.length;
+    const activeIndex = Math.round(scrollLeft / itemWidth);
+    setActiveDot(Math.min(activeIndex, features.length - 1));
+  };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', updateActiveDot);
+      window.addEventListener('resize', updateActiveDot);
+      // تحديث النقطة عند التحميل
+      setTimeout(updateActiveDot, 100);
+      return () => {
+        container.removeEventListener('scroll', updateActiveDot);
+        window.removeEventListener('resize', updateActiveDot);
+      };
+    }
+  }, []);
+
   return (
     <section className={styles.featuresSection}>
       <div className={styles.container}>
-        <div className={styles.features}>
+        {/* ===== تصميم الحاسوب (شبكة) ===== */}
+        <div className={styles.featuresDesktop}>
           {features.map((feature, index) => (
             <div key={index} className={styles.feat}>
               <div className={styles.iconWrapper}>
@@ -58,6 +86,39 @@ const Features = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* ===== تصميم الهاتف (شريط أفقي - أيقونة جنب العنوان) ===== */}
+        <div className={styles.featuresMobile}>
+          <div className={styles.mobileScrollWrapper}>
+            <div 
+              className={styles.mobileScrollContainer}
+              ref={scrollContainerRef}
+            >
+              <div className={styles.mobileFeaturesList}>
+                {features.map((feature, index) => (
+                  <div key={index} className={styles.mobileFeat}>
+                    <div className={styles.mobileIcon}>
+                      {feature.icon}
+                    </div>
+                    <span className={styles.mobileTitle}>
+                      {feature.title}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          
+          {/* ===== مؤشر التمرير (نقاط) ===== */}
+          <div className={styles.scrollIndicators}>
+            {features.map((_, index) => (
+              <span 
+                key={index} 
+                className={`${styles.scrollDot} ${index === activeDot ? styles.active : ''}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
