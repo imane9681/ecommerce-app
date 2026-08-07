@@ -499,6 +499,12 @@
 }
 
 @media (max-width: 30rem) {
+
+  .modalOverlay {
+   overflow-y: auto;
+   padding-top: 8rem;
+  }
+
   .modalContent {
     border-radius: 1rem;
   }
