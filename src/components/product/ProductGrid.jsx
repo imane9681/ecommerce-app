@@ -2,7 +2,18 @@ import React from 'react';
 import ProductCard from './ProductCard';
 import styles from './ProductGrid.module.css';
 
-const ProductGrid = ({ title = "Featured Products", products }) => {
+const ProductGrid = ({ title = "Featured Products", products = [] }) => {
+  if (!products || products.length === 0) {
+    return (
+      <section className={styles.section}>
+        <div className={styles.title}>
+          <h1>{title}</h1>
+          <p>No products available at the moment.</p>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className={styles.section}>
       <div className={styles.title}>

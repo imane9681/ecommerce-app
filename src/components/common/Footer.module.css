@@ -1,4 +1,4 @@
-/* Footer.module.css - باستخدام rem + متجاوب */
+/* Footer.module.css - متجاوب مع الحفاظ على تصميم الحاسوب */
 
 .footer {
   background: linear-gradient(135deg, #2f1e3b 0%, #403355 100%);
@@ -9,9 +9,9 @@
 }
 
 .container {
-  max-width: 95rem; 
+  max-width: 95rem;
   margin: 0 auto;
-  padding: 0 3.125rem; /* 50px */
+  padding: 0 3.125rem;
 }
 
 /* Main Footer */
@@ -55,8 +55,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem; /* 40px */
-  height: 2.5rem; /* 40px */
+  width: 2.5rem;
+  height: 2.5rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   color: #f8fafc;
@@ -85,8 +85,8 @@
   position: absolute;
   bottom: -0.5rem;
   left: 0;
-  width: 1.875rem; /* 30px */
-  height: 0.125rem; /* 2px */
+  width: 1.875rem;
+  height: 0.125rem;
   background: linear-gradient(135deg, #a78bfa 0%, #fdb673 100%);
 }
 
@@ -230,51 +230,85 @@
 }
 
 /* ======================================== */
-/* ===== RESPONSIVE ===== */
+/* ===== RESPONSIVE - تحسينات الهواتف ===== */
 /* ======================================== */
 
-@media (max-width: 64rem) { /* 1024px */
+/* تابلت */
+@media (max-width: 64rem) {
+  .container {
+    padding: 0 2rem 5rem;
+  }
+  
   .footerGrid {
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 
   .featuresGrid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .container {
-    padding: 0 2rem;
-  }
 }
 
-@media (max-width: 48rem) { /* 768px */
+/* هواتف كبيرة / تابلت صغير */
+@media (max-width: 48rem) {
+  .container {
+    padding: 0 1.5rem 5rem;
+  }
+
   .footerMain {
     padding: 3rem 0 1.5rem;
   }
 
   .footerGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
 
-  .featuresGrid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .bottomContent {
-    flex-direction: column;
+  .footerSection {
     gap: 1rem;
-    text-align: center;
   }
 
   .linksGrid {
     grid-template-columns: 1fr;
+    gap: 0.5rem;
   }
 
-  .container {
-    padding: 0 1.5rem;
+  .sectionTitle {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .sectionTitle::after {
+    width: 1.5rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .feature {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .featureIcon {
+    font-size: 1.75rem;
+  }
+
+  .featureText h5 {
+    font-size: 0.9rem;
+  }
+
+  .featureText p {
+    font-size: 0.8rem;
+  }
+
+  .bottomContent {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
   }
 
   .paymentMethods {
@@ -291,13 +325,157 @@
   }
 }
 
-@media (max-width: 30rem) { /* 480px */
+/* هواتف متوسطة */
+@media (max-width: 36rem) {
   .container {
-    padding: 0 0.9375rem; /* 15px */
+    padding: 0 1rem 4rem;
   }
 
   .footerMain {
-    padding: 2rem 0 1rem;
+    padding: 2.5rem 0 1rem;
+  }
+
+  .footerGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .footerSection {
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .logo h3 {
+    font-size: 1.75rem;
+  }
+
+  .companyDescription {
+    font-size: 0.9rem;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .socialLinks {
+    justify-content: center;
+  }
+
+  .socialLink {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .sectionTitle::after {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2rem;
+  }
+
+  .linksGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 20rem;
+  }
+
+  .linkColumn {
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .footerLink {
+    font-size: 0.85rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footerLink:hover {
+    transform: translateX(0);
+  }
+
+  .serviceLinks {
+    align-items: center;
+    width: 100%;
+    max-width: 18rem;
+  }
+
+  .serviceLinks .footerLink {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .contactInfo {
+    align-items: center;
+    width: 100%;
+    max-width: 20rem;
+  }
+
+  .contactItem {
+    text-align: center;
+    justify-content: center;
+    font-size: 0.85rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .feature {
+    padding: 0.75rem;
+  }
+
+  .featureIcon {
+    font-size: 1.5rem;
+  }
+
+  .featureText h5 {
+    font-size: 0.85rem;
+  }
+
+  .featureText p {
+    font-size: 0.75rem;
+  }
+
+  .bottomContent {
+    flex-direction: column;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .paymentMethods {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .paymentIcons {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .paymentIcon {
+    font-size: 1.5rem;
+  }
+}
+
+/* هواتف صغيرة */
+@media (max-width: 30rem) {
+  .container {
+    padding: 0 0.75rem 4rem;
+  }
+
+  .footerMain {
+    padding: 2rem 0 0.75rem;
+  }
+
+  .footerGrid {
+    gap: 1.75rem;
   }
 
   .logo h3 {
@@ -309,21 +487,73 @@
   }
 
   .socialLink {
-    width: 2.125rem; /* 34px */
-    height: 2.125rem; /* 34px */
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 0.85rem;
   }
 
   .sectionTitle {
     font-size: 1rem;
   }
 
+  .linksGrid {
+    grid-template-columns: 1fr;
+    max-width: 15rem;
+    gap: 0.5rem;
+  }
+
+  .linkColumn {
+    gap: 0.5rem;
+  }
+
+  .footerLink {
+    font-size: 0.8rem;
+  }
+
+  .serviceLinks {
+    max-width: 15rem;
+  }
+
+  .serviceLinks .footerLink {
+    font-size: 0.8rem;
+  }
+
+  .contactInfo {
+    max-width: 16rem;
+  }
+
+  .contactItem {
+    font-size: 0.8rem;
+    gap: 0.6rem;
+  }
+
+  .contactIcon {
+    font-size: 0.9rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
   .feature {
-    flex-direction: column;
-    text-align: center;
+    padding: 0.5rem;
   }
 
   .featureIcon {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+  }
+
+  .featureText h5 {
+    font-size: 0.8rem;
+  }
+
+  .featureText p {
+    font-size: 0.7rem;
+  }
+
+  .bottomContent {
+    font-size: 0.75rem;
   }
 
   .paymentIcon {
@@ -331,24 +561,118 @@
   }
 }
 
-@media (max-width: 22.5rem) { /* 360px */
+/* هواتف صغيرة جداً */
+@media (max-width: 22.5rem) {
   .container {
-    padding: 0 0.625rem; /* 10px */
+    padding: 0rem 0.5rem 3.5rem;
+  }
+
+  .footerMain {
+    padding: 1.5rem 0 0.5rem;
+  }
+
+  .footerGrid {
+    gap: 1.5rem;
+  }
+
+  .logo h3 {
+    font-size: 1.25rem;
+  }
+
+  .companyDescription {
+    font-size: 0.8rem;
+  }
+
+  .socialLink {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.75rem;
+  }
+
+  .sectionTitle {
+    font-size: 0.95rem;
   }
 
   .footerLink {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  .serviceLinks .footerLink {
+    font-size: 0.75rem;
   }
 
   .contactItem {
+    font-size: 0.75rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .feature {
+    flex-direction: row;
+    text-align: left;
+    padding: 0.5rem 0;
+  }
+
+  .featureIcon {
+    font-size: 1.25rem;
+  }
+
+  .featureText h5 {
     font-size: 0.8rem;
+  }
+
+  .featureText p {
+    font-size: 0.7rem;
+  }
+
+  .bottomContent {
+    font-size: 0.7rem;
   }
 
   .paymentIcon {
     font-size: 1rem;
   }
 
-  .bottomContent {
-    font-size: 0.75rem;
+  .paymentIcons {
+    gap: 0.5rem;
+  }
+}
+
+/* دعم الشاشات الأفقية على الهواتف */
+@media (max-height: 500px) and (orientation: landscape) {
+  .footerMain {
+    padding: 1.5rem 0 1rem;
+  }
+
+  .footerGrid {
+    gap: 1.5rem;
+  }
+
+  .footerSection {
+    gap: 0.5rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .feature {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .featureIcon {
+    font-size: 1.25rem;
+  }
+
+  .featureText h5 {
+    font-size: 0.8rem;
+  }
+
+  .featureText p {
+    font-size: 0.7rem;
   }
 }

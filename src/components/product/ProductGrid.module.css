@@ -1,17 +1,20 @@
+/* ProductGrid.module.css - متجاوب بالكامل */
+
 .section {
-  padding: 4rem 3.7rem 3rem 3.7rem;
+  padding: 4rem 6rem 3rem;
   overflow: hidden;
+  background: #fafafa;
 }
 
 .title {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   color: #000;
 }
 
 .title h1 {
-  font-size: 3.2rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
   font-weight: 800;
   color: #3b2e1e;
   background: linear-gradient(135deg, #3b2c1e, #695b47);
@@ -21,16 +24,108 @@
 }
 
 .title p {
-  opacity: 0.8;
+  opacity: 0.7;
+  font-size: 1rem;
+  color: #555;
 }
 
 .productCenter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
   max-width: 120rem;
   margin: 0 auto;
-  padding: 0 2rem;
-  gap: 1rem;
+  justify-items: center;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 64rem) {
+  .section {
+    padding: 3rem 1.25rem 2.5rem;
+  }
+  
+  .title h1 {
+    font-size: 2.4rem;
+  }
+  
+  .productCenter {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .section {
+    padding: 2rem 0.75rem 2rem;
+  }
+  
+  .title {
+    margin-bottom: 2rem;
+  }
+  
+  .title h1 {
+    font-size: 2rem;
+  }
+  
+  .title p {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+  
+  .productCenter {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 0.25rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  .section {
+    padding: 1.5rem 0.5rem 1.5rem;
+  }
+  
+  .title h1 {
+    font-size: 1.7rem;
+  }
+  
+  .title p {
+    font-size: 0.85rem;
+  }
+  
+  .productCenter {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .section {
+    padding: 1rem 0.5rem 1rem;
+  }
+  
+  .title h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .title p {
+    font-size: 0.8rem;
+  }
+  
+  .productCenter {
+    gap: 0.6rem;
+  }
+}
+
+@media (max-width: 22.5rem) {
+  .productCenter {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    max-width: 20rem;
+    margin: 0 auto;
+  }
+  
+  .title h1 {
+    font-size: 1.3rem;
+  }
 }

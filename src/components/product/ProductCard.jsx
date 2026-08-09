@@ -3,17 +3,18 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { useToast } from '../../context/ToastContext';
 import QuickViewModal from './QuickViewModal';
-import SearchModal from './SearchModal'; // ← إضافة الاستيراد
+import SearchModal from './SearchModal';
 import { FaStar, FaRegStar, FaHeart, FaSearch, FaShoppingCart, FaEye } from 'react-icons/fa';
 import styles from './ProductCard.module.css';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, fullWidth = false, imageFit = 'contain' }) => {
   const { addToCart, addToWishlist, removeFromWishlist, isInWishlist } = useCart();
   const { showToast } = useToast();
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [showQuickView, setShowQuickView] = useState(false);
-  const [showSearch, setShowSearch] = useState(false); // ← إضافة حالة البحث
+  const [showSearch, setShowSearch] = useState(false);
   const [rating] = useState(product.rating || 4);
+  const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
     setIsWishlisted(isInWishlist(product.id));
@@ -53,7 +54,6 @@ const ProductCard = ({ product }) => {
     setShowQuickView(true);
   };
 
-  // ===== فتح نافذة البحث =====
   const handleSearch = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -72,9 +72,14 @@ const ProductCard = ({ product }) => {
     });
   };
 
+  // معالجة خطأ تحميل الصورة
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   return (
     <>
-      <div className={styles.productItem}>
+      <div className={`${styles.productItem} ${fullWidth ? styles.fullWidth : ''}`}>
         <div className={styles.overlay}>
           <Link 
             to={{
@@ -83,7 +88,13 @@ const ProductCard = ({ product }) => {
             }} 
             className={styles.productThumb}
           >
-            <img src={product.img} alt={product.title} />
+            <img 
+              src={imageError ? '/images/placeholder.png' : product.img} 
+              alt={product.title} 
+              loading="lazy"
+              onError={handleImageError}
+              className={imageFit === 'cover' ? styles.cover : ''}
+            />
           </Link>
           {product.discount && (
             <span className={styles.discount}>{product.discount}</span>
@@ -148,7 +159,6 @@ const ProductCard = ({ product }) => {
         </ul>
       </div>
 
-      {/* Quick View Modal */}
       {showQuickView && (
         <QuickViewModal 
           product={product} 
@@ -156,7 +166,6 @@ const ProductCard = ({ product }) => {
         />
       )}
 
-      {/* Search Modal */}
       {showSearch && (
         <SearchModal 
           product={product} 

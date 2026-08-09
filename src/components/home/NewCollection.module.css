@@ -4,6 +4,7 @@
   display: flex;
   position: relative;
   overflow: hidden;
+  padding: 1rem 0;
 }
 
 .newc {
@@ -158,7 +159,7 @@
 
 @media (max-width: 30rem) { /* 480px */
   .newc {
-    height: 15em;
+    height: 12em;
   }
 
   .newc::before {
@@ -198,7 +199,7 @@
 
 @media (max-width: 22.5rem) { /* 360px */
   .newc {
-    height: 12.5em;
+    height: 9rem;
   }
 
   .captr {

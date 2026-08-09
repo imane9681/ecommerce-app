@@ -264,8 +264,12 @@
   }
 
   .statsGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem; /* 12px */
+  }
+
+  .statCard {
+    padding: 0.75rem 1rem; /* 12px 8px */
   }
 
   .testimonialCard {

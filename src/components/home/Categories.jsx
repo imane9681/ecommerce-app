@@ -234,7 +234,7 @@ const Categories = () => {
                       className={styles.categoryCircle}
                       style={{ 
                         background: colors.bg,
-                        border: `0.125rem solid ${colors.icon}40`
+                        border: `0.01rem solid ${colors.icon}40`
                       }}
                     >
                       <div 
