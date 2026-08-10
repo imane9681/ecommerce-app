@@ -1,13 +1,14 @@
-/* ProductList.module.css - متجاوب بالكامل */
+/* ProductList.module.css - متجاوب بالكامل مع إصلاح محاذاة البطاقات */
 
 .productCenter {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1.5rem;
   max-width: 120rem;
   margin: 0 auto;
-  padding: 1rem 1rem;
-  justify-items: center;
+  padding: 1rem 0;
+  justify-items: start;
+  align-items: start;
 }
 
 .noProducts {
@@ -20,13 +21,11 @@
   margin: 1rem;
 }
 
-/* ===== RESPONSIVE ===== */
-
 @media (max-width: 64rem) {
   .productCenter {
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     gap: 1.25rem;
-    padding: 0.75rem;
+    padding: 0.75rem 0;
   }
 }
 
@@ -34,7 +33,8 @@
   .productCenter {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    padding: 0.5rem;
+    padding: 0.5rem 0;
+    justify-items: center;
   }
   
   .noProducts {
@@ -47,14 +47,14 @@
 @media (max-width: 36rem) {
   .productCenter {
     gap: 0.75rem;
-    padding: 0.25rem;
+    padding: 0.25rem 0;
   }
 }
 
 @media (max-width: 30rem) {
   .productCenter {
     gap: 0.6rem;
-    padding: 0.25rem;
+    padding: 0.25rem 0;
   }
 }
 
@@ -63,6 +63,8 @@
     grid-template-columns: 1fr;
     gap: 0.75rem;
     max-width: 20rem;
+    margin: 0 auto;
+    justify-items: center;
   }
   
   .noProducts {

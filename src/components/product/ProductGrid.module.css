@@ -1,7 +1,7 @@
-/* ProductGrid.module.css - متجاوب بالكامل */
+/* ProductGrid.module.css - متجاوب بالكامل مع إصلاح محاذاة البطاقات */
 
 .section {
-  padding: 4rem 6rem 3rem;
+  padding: 4rem 1.5rem 3rem;
   overflow: hidden;
   background: #fafafa;
 }
@@ -31,14 +31,13 @@
 
 .productCenter {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   gap: 1.5rem;
-  max-width: 120rem;
+  padding: 0 5rem;
   margin: 0 auto;
-  justify-items: center;
+  justify-items: start;
+  align-items: start;
 }
-
-/* ===== RESPONSIVE ===== */
 
 @media (max-width: 64rem) {
   .section {
@@ -52,6 +51,7 @@
   .productCenter {
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     gap: 1.25rem;
+    justify-items: start;
   }
 }
 
@@ -77,6 +77,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     padding: 0 0.25rem;
+    justify-items: center;
   }
 }
 
@@ -123,6 +124,7 @@
     gap: 0.75rem;
     max-width: 20rem;
     margin: 0 auto;
+    justify-items: center;
   }
   
   .title h1 {

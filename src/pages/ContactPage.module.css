@@ -1,4 +1,4 @@
-/* ContactPage.module.css */
+/* ContactPage.module.css - متجاوب بالكامل مع تحسينات الهواتف */
 
 .contactPage {
   min-height: 100vh;
@@ -504,36 +504,384 @@
   transform: translateX(0.25rem);
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 48rem) {
-  .heroTitle {
-    font-size: 2.5rem;
-  }
+/* ============================================================ */
+/* ===== RESPONSIVE - Tablet ===== */
+/* ============================================================ */
 
-  .heroSubtitle {
-    font-size: 1rem;
-  }
-
+@media (max-width: 64rem) {
   .contactWrapper {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
-  }
-
-  .infoGrid {
-    gap: 1rem;
   }
 
   .featuresGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .contactInfo,
-  .contactForm {
+  .heroTitle {
+    font-size: 3rem;
+  }
+}
+
+/* ============================================================ */
+/* ===== RESPONSIVE - Mobile (الهواتف) ===== */
+/* ============================================================ */
+
+@media (max-width: 48rem) {
+  /* ===== Hero ===== */
+  .heroSection {
+    padding: 6rem 1.5rem 3rem;
+  }
+
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .heroBadge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  /* ===== Contact Section ===== */
+  .contactSection {
+    padding: 2.5rem 0;
+  }
+
+  .contactWrapper {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .contactInfo {
     padding: 1.5rem;
+  }
+
+  .contactInfoTitle {
+    font-size: 1.5rem;
+  }
+
+  .contactInfoSubtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .infoGrid {
+    gap: 0.75rem;
+  }
+
+  .infoCard {
+    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .infoIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+
+  .infoContent h4 {
+    font-size: 0.95rem;
+  }
+
+  .infoText,
+  .infoLink {
+    font-size: 0.85rem;
+  }
+
+  /* ===== Social ===== */
+  .socialSection {
+    text-align: center;
   }
 
   .socialLinks {
     justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .socialLink {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+
+  /* ===== Form ===== */
+  .contactForm {
+    padding: 1.5rem;
+  }
+
+  .formTitle {
+    font-size: 1.5rem;
+  }
+
+  .formSubtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .formGroup {
+    margin-bottom: 1rem;
+  }
+
+  .formGroup label {
+    font-size: 0.85rem;
+  }
+
+  .formGroup input,
+  .formGroup textarea {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .submitBtn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* ===== Success Message ===== */
+  .successIcon {
+    font-size: 3rem;
+  }
+
+  .successMessage h3 {
+    font-size: 1.2rem;
+  }
+
+  /* ===== Features ===== */
+  .featuresSection {
+    padding: 2rem 0 2.5rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .featureCard {
+    padding: 1.25rem;
+  }
+
+  .featureIcon {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.2rem;
+  }
+
+  .featureContent h4 {
+    font-size: 1rem;
+  }
+
+  .featureContent p {
+    font-size: 0.85rem;
+  }
+
+  /* ===== Map ===== */
+  .mapSection {
+    padding: 0 0 2.5rem;
+  }
+
+  .mapPlaceholder {
+    height: 14rem;
+  }
+
+  .mapIcon {
+    font-size: 2.5rem;
+  }
+
+  .mapContent h3 {
+    font-size: 1.2rem;
+  }
+
+  .mapContent p {
+    font-size: 0.9rem;
+  }
+
+  .mapLink {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================================ */
+/* ===== RESPONSIVE - Small Mobile (هواتف صغيرة) ===== */
+/* ============================================================ */
+
+@media (max-width: 30rem) {
+  /* ===== Hero ===== */
+  .heroSection {
+    padding: 6rem 1rem 2rem;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 0.9rem;
+  }
+
+  /* ===== Contact ===== */
+  .contactSection {
+    padding: 1.5rem 0;
+  }
+
+  .contactInfo {
+    padding: 1rem;
+  }
+
+  .contactInfoTitle {
+    font-size: 1.3rem;
+  }
+
+  .infoCard {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.75rem;
+  }
+
+  .infoIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+
+  .contactForm {
+    padding: 1rem;
+  }
+
+  .formTitle {
+    font-size: 1.3rem;
+  }
+
+  /* ===== Features ===== */
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .featureCard {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+  }
+
+  .featureIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .featureContent {
+    flex: 1;
+  }
+
+  .featureContent h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .featureContent p {
+    font-size: 0.8rem;
+  }
+
+  /* ===== Map ===== */
+  .mapPlaceholder {
+    height: 14rem;
+  }
+
+  .mapIcon {
+    font-size: 2rem;
+  }
+
+  .mapContent h3 {
+    font-size: 1rem;
+  }
+
+  .mapContent p {
+    font-size: 0.8rem;
+  }
+
+  .mapLink {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  /* ===== Social ===== */
+  .socialLink {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================================ */
+/* ===== RESPONSIVE - Very Small Mobile (هواتف صغيرة جداً) ===== */
+/* ============================================================ */
+
+@media (max-width: 22.5rem) {
+  .heroTitle {
+    font-size: 1.6rem;
+  }
+
+  .contactInfoTitle {
+    font-size: 1.1rem;
+  }
+
+  .formTitle {
+    font-size: 1.1rem;
+  }
+
+  .infoCard {
+    padding: 0.5rem;
+  }
+
+  .infoContent h4 {
+    font-size: 0.85rem;
+  }
+
+  .infoText,
+  .infoLink {
+    font-size: 0.75rem;
+  }
+
+  .formGroup label {
+    font-size: 0.8rem;
+  }
+
+  .formGroup input,
+  .formGroup textarea {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .submitBtn {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .featureCard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .featureIcon {
+    margin: 0 auto 0.5rem;
+  }
+
+  .socialLink {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.8rem;
   }
 
   .mapPlaceholder {
@@ -541,40 +889,77 @@
   }
 }
 
-@media (max-width: 30rem) {
+/* ============================================================ */
+/* ===== دعم الشاشات الأفقية على الهواتف ===== */
+/* ============================================================ */
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .heroSection {
+    padding: 3rem 1.5rem 2rem;
+  }
+
   .heroTitle {
     font-size: 2rem;
   }
 
-  .heroSection {
-    padding: 3rem 1rem 2.5rem;
+  .heroSubtitle {
+    font-size: 0.9rem;
   }
 
-  .featuresGrid {
-    grid-template-columns: 1fr;
+  .contactSection {
+    padding: 1.5rem 0;
   }
 
-  .contactInfo,
+  .contactWrapper {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .contactInfo {
+    padding: 1rem;
+  }
+
   .contactForm {
     padding: 1rem;
   }
 
-  .contactInfoTitle,
-  .formTitle {
-    font-size: 1.4rem;
+  .infoGrid {
+    gap: 0.5rem;
   }
 
   .infoCard {
+    padding: 0.5rem;
+  }
+
+  .infoIcon {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.8rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+
+  .featureCard {
+    padding: 0.75rem;
     flex-direction: column;
-    align-items: center;
     text-align: center;
   }
 
-  .mapPlaceholder {
-    height: 12rem;
+  .featureIcon {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.8rem;
+    margin: 0 auto 0.5rem;
   }
 
-  .mapContent h3 {
-    font-size: 1.2rem;
+  .mapPlaceholder {
+    height: 10rem;
+  }
+
+  .submitBtn {
+    padding: 0.5rem 1rem;
   }
 }

@@ -1,4 +1,4 @@
-/* AboutPage.module.css */
+/* AboutPage.module.css - متجاوب بالكامل مع تحسينات الهواتف */
 
 .aboutPage {
   min-height: 100vh;
@@ -408,12 +408,6 @@
   background: rgba(253, 182, 115, 0.1);
 }
 
-.teamAvatar img:not([src]) + .teamAvatarFallback,
-.teamAvatar img[src=""] + .teamAvatarFallback,
-.teamAvatar img:not([src]) ~ .teamAvatarFallback {
-  display: flex;
-}
-
 .teamName {
   font-size: 1.1rem;
   font-weight: 700;
@@ -525,11 +519,6 @@
   background: rgba(253, 182, 115, 0.1);
 }
 
-.testimonialAvatar img:not([src]) + .testimonialAvatarFallback,
-.testimonialAvatar img[src=""] + .testimonialAvatarFallback {
-  display: flex;
-}
-
 .testimonialInfo h4 {
   font-size: 1rem;
   font-weight: 700;
@@ -595,6 +584,7 @@
 .ctaBtnPrimary:hover {
   transform: translateY(-0.125rem);
   box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.15);
+  color: #3b2e1e ;
 }
 
 .ctaIcon {
@@ -604,6 +594,7 @@
 
 .ctaBtnPrimary:hover .ctaIcon {
   transform: translateX(0.25rem);
+  
 }
 
 .ctaBtnSecondary {
@@ -623,114 +614,510 @@
 
 .ctaBtnSecondary:hover {
   background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
   transform: translateY(-0.125rem);
 }
 
-/* ===== Responsive ===== */
+/* ============================================================ */
+/* ===== RESPONSIVE - Tablet ===== */
+/* ============================================================ */
+
+@media (max-width: 64rem) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .valuesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .aboutWrapper {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .heroTitle {
+    font-size: 3rem;
+  }
+}
+
+/* ============================================================ */
+/* ===== RESPONSIVE - Mobile (الهواتف) ===== */
+/* ============================================================ */
+
 @media (max-width: 48rem) {
+  /* ===== Hero ===== */
+  .heroSection {
+    padding: 6rem 1.5rem 3rem;
+  }
+
   .heroTitle {
     font-size: 2.5rem;
   }
 
   .heroSubtitle {
     font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .heroBadge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  /* ===== Stats ===== */
+  .statsSection {
+    padding: 2.5rem 0 2rem;
   }
 
   .statsGrid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .aboutWrapper {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .aboutFeatures {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .valuesGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .teamGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .testimonialsGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .ctaContent {
-    flex-direction: column;
-    text-align: center;
-    padding: 2rem 1.5rem;
-  }
-
-  .ctaButtons {
-    justify-content: center;
-    width: 100%;
-  }
-
-  .ctaBtnPrimary,
-  .ctaBtnSecondary {
-    flex: 1;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 30rem) {
-  .heroTitle {
-    font-size: 2rem;
-  }
-
-  .heroSection {
-    padding: 3rem 1rem 2.5rem;
-  }
-
-  .statsGrid {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
+    gap: 1rem;
   }
 
   .statCard {
-    padding: 1.25rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .statIcon {
+    font-size: 2rem;
   }
 
   .statNumber {
     font-size: 2rem;
   }
 
+  .statLabel {
+    font-size: 0.85rem;
+  }
+
+  /* ===== About Content ===== */
+  .aboutContent {
+    padding: 2rem 0 2.5rem;
+  }
+
+  .aboutWrapper {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
   .aboutText h2 {
     font-size: 2rem;
   }
 
+  .aboutText p {
+    font-size: 0.95rem;
+  }
+
   .aboutFeatures {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .aboutFeature {
+    font-size: 0.85rem;
+  }
+
+  .aboutImagePlaceholder {
+    padding: 2.5rem 1.5rem;
+    min-height: 15rem;
+  }
+
+  .aboutImageIcon {
+    font-size: 3rem;
+  }
+
+  .aboutImageContent h3 {
+    font-size: 1.5rem;
+  }
+
+  .aboutImageContent p {
+    font-size: 0.95rem;
+  }
+
+  /* ===== Values ===== */
+  .valuesSection {
+    padding: 2.5rem 0;
+  }
+
+  .valuesHeader {
+    margin-bottom: 2rem;
+  }
+
+  .valuesHeader h2 {
+    font-size: 2rem;
+  }
+
+  .valuesHeader p {
+    font-size: 0.95rem;
   }
 
   .valuesGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .valueCard {
+    padding: 1.5rem 1rem;
+  }
+
+  .valueIcon {
+    font-size: 2rem;
+  }
+
+  .valueTitle {
+    font-size: 1rem;
+  }
+
+  .valueDescription {
+    font-size: 0.85rem;
+  }
+
+  /* ===== Team ===== */
+  .teamSection {
+    padding: 2.5rem 0;
+  }
+
+  .teamHeader {
+    margin-bottom: 2rem;
+  }
+
+  .teamHeader h2 {
+    font-size: 2rem;
+  }
+
+  .teamHeader p {
+    font-size: 0.95rem;
   }
 
   .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .teamCard {
+    padding: 1.25rem;
+  }
+
+  .teamAvatar {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .teamName {
+    font-size: 1rem;
+  }
+
+  .teamBio {
+    font-size: 0.85rem;
+  }
+
+  /* ===== Testimonials ===== */
+  .testimonialsSection {
+    padding: 2.5rem 0;
+  }
+
+  .testimonialsHeader {
+    margin-bottom: 2rem;
+  }
+
+  .testimonialsHeader h2 {
+    font-size: 2rem;
+  }
+
+  .testimonialsGrid {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .testimonialCard {
     padding: 1.5rem;
   }
 
+  .testimonialText {
+    font-size: 0.95rem;
+  }
+
+  /* ===== CTA ===== */
+  .ctaSection {
+    padding: 2.5rem 0;
+  }
+
   .ctaContent {
-    padding: 1.5rem 1rem;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-radius: 1rem;
   }
 
   .ctaText h2 {
     font-size: 1.5rem;
   }
 
+  .ctaText p {
+    font-size: 0.95rem;
+  }
+
+  .ctaButtons {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ctaBtnPrimary,
+  .ctaBtnSecondary {
+    flex: 1;
+    justify-content: center;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    min-width: 8rem;
+  }
+}
+
+/* ============================================================ */
+/* ===== RESPONSIVE - Small Mobile (هواتف صغيرة) ===== */
+/* ============================================================ */
+
+@media (max-width: 30rem) {
+  /* ===== Hero ===== */
+  .heroSection {
+    padding: 6rem 1rem 2rem;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 0.9rem;
+  }
+
+  /* ===== Stats ===== */
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .statCard {
+    padding: 1rem 0.75rem;
+  }
+
+  .statIcon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .statNumber {
+    font-size: 1.5rem;
+  }
+
+  .statLabel {
+    font-size: 0.75rem;
+  }
+
+  /* ===== About ===== */
+  .aboutText h2 {
+    font-size: 1.6rem;
+  }
+
+  .aboutFeatures {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutImagePlaceholder {
+    padding: 2rem 1rem;
+    min-height: 12rem;
+  }
+
+  .aboutImageIcon {
+    font-size: 2.5rem;
+  }
+
+  .aboutImageContent h3 {
+    font-size: 1.2rem;
+  }
+
+  /* ===== Values ===== */
+  .valuesGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .valuesHeader h2 {
+    font-size: 1.6rem;
+  }
+
+  /* ===== Team ===== */
+  .teamGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .teamHeader h2 {
+    font-size: 1.6rem;
+  }
+
+  .teamCard {
+    padding: 1rem;
+  }
+
+  .teamAvatar {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  /* ===== Testimonials ===== */
+  .testimonialsHeader h2 {
+    font-size: 1.6rem;
+  }
+
+  .testimonialCard {
+    padding: 1rem;
+  }
+
+  .testimonialText {
+    font-size: 0.9rem;
+  }
+
+  /* ===== CTA ===== */
+  
+  .ctaContent {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .ctaText h2 {
+    font-size: 1.3rem;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
   .ctaBtnPrimary,
   .ctaBtnSecondary {
     width: 100%;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ============================================================ */
+/* ===== RESPONSIVE - Very Small Mobile (هواتف صغيرة جداً) ===== */
+/* ============================================================ */
+
+@media (max-width: 22.5rem) {
+  .heroTitle {
+    font-size: 1.6rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .statCard {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .statNumber {
+    font-size: 1.2rem;
+  }
+
+  .aboutText h2 {
+    font-size: 1.3rem;
+  }
+
+  .valuesHeader h2 {
+    font-size: 1.3rem;
+  }
+
+  .teamHeader h2 {
+    font-size: 1.3rem;
+  }
+
+  .testimonialsHeader h2 {
+    font-size: 1.3rem;
+  }
+
+  .ctaText h2 {
+    font-size: 1.1rem;
+  }
+
+  .ctaContent {
+    padding: 1rem 0.75rem;
+  }
+}
+
+/* ============================================================ */
+/* ===== دعم الشاشات الأفقية على الهواتف ===== */
+/* ============================================================ */
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .heroSection {
+    padding: 6rem 1.5rem 2rem;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+
+  .statCard {
+    padding: 1rem;
+  }
+
+  .statIcon {
+    font-size: 1.5rem;
+  }
+
+  .statNumber {
+    font-size: 1.5rem;
+  }
+
+  .aboutWrapper {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .aboutImagePlaceholder {
+    min-height: 12rem;
+    padding: 2rem;
+  }
+
+  .valuesGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+
+  .testimonialsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .ctaContent {
+    flex-direction: row;
+    padding: 1.5rem 2rem;
+  }
+
+  .ctaText h2 {
+    font-size: 1.3rem;
   }
 }
