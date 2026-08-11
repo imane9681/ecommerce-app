@@ -1,4 +1,4 @@
-/* Login.module.css - التصميم الأصلي + تجاوب */
+/* Login.module.css - التصميم الأصلي + تجاوب محسن للهواتف */
 
 /* ===== Variables ===== */
 :root {
@@ -14,8 +14,8 @@
   --border: rgba(253, 182, 115, 0.2);
   --shadow: 0 0.5rem 2rem rgba(59, 46, 30, 0.1);
   --shadow-hover: 0 0.75rem 3rem rgba(59, 46, 30, 0.15);
-  --radius: 1rem; /* 16px */
-  --radius-sm: 0.625rem; /* 10px */
+  --radius: 1rem;
+  --radius-sm: 0.625rem;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -720,9 +720,11 @@
   }
 }
 
-/* ===== RESPONSIVE ===== */
+/* ============================================================ */
+/* ===== RESPONSIVE - Tablet ===== */
+/* ============================================================ */
 
-@media (max-width: 64rem) { /* 1024px */
+@media (max-width: 64rem) {
   .loginContent {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -750,91 +752,82 @@
   }
 }
 
-@media (max-width: 48rem) { /* 768px */
+/* ============================================================ */
+/* ===== RESPONSIVE - Mobile (الهواتف) ===== */
+/* ============================================================ */
+
+@media (max-width: 48rem) {
+  /* ===== Container ===== */
   .loginContainer {
-    padding: 1rem;
-  }
-
-  .loginCard {
-    padding: 2rem;
-  }
-
-  .socialLogin {
-    grid-template-columns: 1fr;
-  }
-
-  .rememberMe {
-    flex-direction: column;
+    padding: 0.75rem;
+    min-height: 100vh;
     align-items: flex-start;
+    padding-top: 2rem;
+  }
+
+  .loginContainer::before {
+    height: 15rem;
+  }
+
+  /* ===== Content ===== */
+  .loginContent {
+    margin-top: 0;
     gap: 1rem;
   }
 
-  .featureImg {
-    width: 20rem;
-    height: 27rem;
-  }
-
+  /* ===== Illustration ===== */
   .loginIllustration {
-    padding: 1.5rem;
+    display: none;
   }
-}
 
-@media (max-width: 30rem) { /* 480px */
+  /* ===== Card ===== */
+  .loginCardWrapper {
+    justify-content: center;
+    width: 100%;
+  }
+
   .loginCard {
     padding: 1.5rem;
+    border-radius: var(--radius);
+    max-width: 100%;
+    animation: none;
+    margin-top: 0.5rem;
+  }
+
+  .loginCard::before {
+    height: 0.1875rem;
+  }
+
+  /* ===== Header ===== */
+  .loginHeader {
+    margin-bottom: 1.5rem;
   }
 
   .loginHeader h1 {
-    font-size: 1.8rem;
-  }
-
-  .loginButton,
-  .socialButton {
-    padding: 0.85rem;
-  }
-
-  .loginIllustration h2 {
-    font-size: 1.8rem;
-  }
-
-  .loginIllustration p {
-    font-size: 1rem;
-  }
-
-  .featureImg {
-    width: 15rem;
-    height: 20rem;
-  }
-
-  .loginIllustration {
-    padding: 1rem;
-  }
-
-  .loginContainer {
-    padding: 0.5rem;
-  }
-
-  .loginContent {
-    margin-top: 2rem;
-  }
-}
-
-@media (max-width: 22.5rem) { /* 360px */
-  .loginCard {
-    padding: 1rem;
-  }
-
-  .loginHeader h1 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
   }
 
   .loginHeader p {
     font-size: 0.85rem;
   }
 
+  /* ===== Form ===== */
+  .loginForm {
+    margin-bottom: 1.5rem;
+  }
+
+  .formGroup {
+    margin-bottom: 0.75rem;
+  }
+
   .loginForm input {
-    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
-    font-size: 0.85rem;
+    padding: 0.8rem 0.8rem 0.8rem 2.5rem;
+    font-size: 0.9rem;
+  }
+
+  .loginForm input:focus {
+    padding-left: 2.7rem;
   }
 
   .inputIcon {
@@ -842,40 +835,272 @@
     font-size: 1.2rem;
   }
 
+  .passwordToggle {
+    right: 0.75rem;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .passwordToggle svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  /* ===== Remember Me ===== */
+  .rememberMe {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .checkboxContainer {
+    font-size: 0.85rem;
+  }
+
+  .forgotPassword {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  /* ===== Login Button ===== */
   .loginButton {
+    padding: 0.8rem;
     font-size: 0.95rem;
-    padding: 0.75rem;
+    border-radius: 0.5rem;
+  }
+
+  .spinner {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  /* ===== Divider ===== */
+  .divider {
+    margin: 1.5rem 0;
+    font-size: 0.8rem;
+  }
+
+  .divider span {
+    padding: 0 0.75rem;
+  }
+
+  /* ===== Social Login ===== */
+  .socialLogin {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
   }
 
   .socialButton {
-    font-size: 0.8rem;
     padding: 0.7rem;
+    font-size: 0.85rem;
+    border-radius: 0.5rem;
+    gap: 0.6rem;
   }
 
-  .featureImg {
-    width: 12.5rem;
-    height: 17rem;
+  .socialIcon {
+    width: 1rem;
+    height: 1rem;
   }
 
+  /* ===== Sign Up Link ===== */
   .signupLink {
+    font-size: 0.85rem;
+    padding-top: 1rem;
+  }
+
+  .signupText {
+    padding: 0.2rem 0.4rem;
+  }
+
+  .signupText::after {
+    content: '→';
+    margin-left: 0.4rem;
+  }
+
+  /* ===== Messages ===== */
+  .errorMessage,
+  .successMessage {
+    font-size: 0.8rem;
+    padding: 0.75rem 1rem;
+    gap: 0.6rem;
+    border-left-width: 0.1875rem;
+  }
+
+  .errorMessage svg,
+  .successMessage svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+/* ============================================================ */
+/* ===== RESPONSIVE - Small Mobile (هواتف صغيرة) ===== */
+/* ============================================================ */
+
+@media (max-width: 30rem) {
+  .loginContainer {
+    padding: 6rem 1.5rem 0rem;
+  }
+
+  .loginCard {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .loginHeader h1 {
+    font-size: 1.4rem;
+  }
+
+  .loginHeader p {
     font-size: 0.8rem;
   }
 
-  .divider {
+  .loginForm input {
+    padding: 0.7rem 0.7rem 0.7rem 2.2rem;
+    font-size: 0.85rem;
+  }
+
+  .loginForm input:focus {
+    padding-left: 2.4rem;
+  }
+
+  .inputIcon {
+    font-size: 1rem;
+  }
+
+  .passwordToggle {
+    width: 1.75rem;
+    height: 1.75rem;
+    right: 0.5rem;
+  }
+
+  .passwordToggle svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  .loginButton {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .socialButton {
+    padding: 0.6rem;
     font-size: 0.8rem;
   }
 
   .rememberMe {
+    gap: 0.5rem;
+  }
+
+  .checkboxContainer {
     font-size: 0.8rem;
+  }
+
+  .customCheckbox {
+    width: 1rem;
+    height: 1rem;
   }
 
   .forgotPassword {
     font-size: 0.75rem;
   }
 
+  .signupLink {
+    font-size: 0.8rem;
+  }
+
   .errorMessage,
   .successMessage {
     font-size: 0.75rem;
-    padding: 0.75rem;
+    padding: 0.6rem 0.75rem;
+  }
+}
+
+
+/* ============================================================ */
+/* ===== دعم الشاشات الأفقية على الهواتف ===== */
+/* ============================================================ */
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .loginContainer {
+    padding: 0.5rem 1rem;
+    min-height: 100vh;
+    align-items: center;
+    padding-top: 0.5rem;
+  }
+
+  .loginContent {
+    margin-top: 0;
+    gap: 1rem;
+  }
+
+  .loginIllustration {
+    display: none;
+  }
+
+  .loginCard {
+    padding: 1rem 1.5rem;
+    max-width: 28rem;
+    border-radius: var(--radius);
+  }
+
+  .loginHeader {
+    margin-bottom: 0.75rem;
+  }
+
+  .loginHeader h1 {
+    font-size: 1.3rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .loginHeader p {
+    font-size: 0.75rem;
+  }
+
+  .formGroup {
+    margin-bottom: 0.5rem;
+  }
+
+  .loginForm input {
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+    font-size: 0.8rem;
+  }
+
+  .rememberMe {
+    margin: 0.5rem 0 1rem;
+  }
+
+  .loginButton {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .socialLogin {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .socialButton {
+    padding: 0.4rem;
+    font-size: 0.7rem;
+  }
+
+  .signupLink {
+    font-size: 0.75rem;
+    padding-top: 0.5rem;
+  }
+
+  .divider {
+    margin: 0.75rem 0;
+  }
+
+  .errorMessage,
+  .successMessage {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.6rem;
+    margin-bottom: 0.75rem;
   }
 }
