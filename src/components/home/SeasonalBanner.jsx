@@ -1,6 +1,10 @@
 // components/home/SeasonalBanner/SeasonalBanner.jsx
 import React, { useState, useEffect } from 'react';
-import { FaArrowRight, FaClock, FaFire, FaStar, FaBolt, FaTag, FaTruck, FaShieldAlt, FaGift, FaShippingFast, FaExchangeAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';  // ← أضف هذا
+import { 
+  FaArrowRight, FaClock, FaFire, FaStar, FaBolt, FaTag, 
+  FaTruck, FaShieldAlt, FaGift, FaShippingFast, FaExchangeAlt 
+} from 'react-icons/fa';
 import styles from './SeasonalBanner.module.css';
 
 const SeasonalBanner = ({ 
@@ -8,7 +12,7 @@ const SeasonalBanner = ({
   title = "Winter Essentials",
   description = "Get ready for the season with our exclusive collection. Limited time offers!",
   days = 5,
-  imageUrl = "", // سيتم استخدام الصورة الافتراضية إذا لم توفر صورة
+  imageUrl = "",
   discount = 60,
   badgeText = "Limited Time",
   ctaText = "Shop The Collection",
@@ -152,10 +156,10 @@ const SeasonalBanner = ({
           </div>
 
           <div className={styles.ctaContainer}>
-            <button className={styles.ctaButton}>
+            <Link to="/products?promotion=sale&sort=newest" className={styles.ctaButton}>
               <span>{ctaText}</span>
               <FaArrowRight className={styles.arrowIcon} />
-            </button>
+            </Link>
             <div className={styles.ctaNote}>
               <FaBolt className={styles.noteIcon} />
               <span>{noteText}</span>

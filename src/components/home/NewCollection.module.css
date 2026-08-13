@@ -121,7 +121,7 @@
 
 @media (max-width: 48rem) { /* 768px */
   .newc {
-    height: 20em;
+    height: 17em;
   }
 
   .newc::before {

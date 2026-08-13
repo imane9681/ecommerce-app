@@ -1,5 +1,6 @@
 // Testimonials.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Testimonials.module.css';
 import { FaStar, FaQuoteLeft, FaUserCircle } from 'react-icons/fa';
 
@@ -161,9 +162,9 @@ const Testimonials = () => {
 
         {/* Minimal CTA */}
         <div className={styles.ctaSection}>
-          <button className={styles.primaryCta}>
-            Share Your Experience
-          </button>
+          <Link to="/products?sort=rating" className={styles.primaryCta}>
+            View Top Rated Products
+          </Link>
         </div>
       </div>
     </section>

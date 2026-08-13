@@ -19,6 +19,22 @@ export const featuredProducts = [
   {
     id: 1,
     category: "electronics",
+    brand: "Beats",
+    img: "/images1/imag1.png",
+    discount: "",
+    title: "Beats Solo³ Bluetooth Wireless All-Day On-Ear Headphones - Gold", 
+    price: "$270",
+    originalPrice: null,
+    rating: 4.5,
+    reviewCount: 150,
+    inStock: true,
+    tags: ["featured", "electronics"],
+    isNew: false
+  },
+ 
+  {
+    id: 2,
+    category: "electronics",
     brand: "oppo",
     img: "/images1/imag6.png",
     discount: "",
@@ -32,7 +48,7 @@ export const featuredProducts = [
     isNew: false
   },
   {
-    id: 2,
+    id: 3,
     category: "electronics",
     brand: "dyson", 
     img: "/images1/imag9.png",
@@ -47,10 +63,10 @@ export const featuredProducts = [
     isNew: true
   },
   {
-    id: 3,
+    id: 4,
     category: "beauty",
     brand: "olive",
-    img: "/images1/image10.png",
+    img: "/images1/imag10.png",
     discount: "",
     title: "100% Extra Virgin Olive Oil", 
     price: "$150",
@@ -62,7 +78,7 @@ export const featuredProducts = [
     isNew: false
   },
   {
-    id: 4,
+    id: 5,
     category: "clothing",
     brand: "velomy",
     img: "/images1/imag13.png",
@@ -77,7 +93,7 @@ export const featuredProducts = [
     isNew: false
   },
   {
-    id: 5,
+    id: 6,
     category: "electronics",
     brand: "shreeji",
     img: "/images1/imag7.png",
@@ -92,7 +108,7 @@ export const featuredProducts = [
     isNew: true
   },
   {
-    id: 6,
+    id: 7,
     category: "home",
     brand: "luxury", 
     img: "/images1/imag33.png",
@@ -107,7 +123,7 @@ export const featuredProducts = [
     isNew: false
   },
   {
-    id: 7,
+    id: 8,
     category: "beauty",
     brand: "needly",
     img: "/images1/imag16.png",
@@ -122,7 +138,7 @@ export const featuredProducts = [
     isNew: true
   },
   {
-    id: 8,
+    id: 9,
     category: "home",
     brand: "wrapping",
     img: "/images1/imag11.png",
@@ -137,7 +153,7 @@ export const featuredProducts = [
     isNew: false
   },
   {
-    id: 9,
+    id: 10,
     category: "clothing",
     brand: "tall", 
     img: "/images1/imag18.png",
@@ -152,7 +168,7 @@ export const featuredProducts = [
     isNew: true
   },
   {
-    id: 10,
+    id: 11,
     category: "clothing",
     brand: "darley",
     img: "/images1/imag19.png",
@@ -167,7 +183,7 @@ export const featuredProducts = [
     isNew: false
   },
   {
-    id: 11,
+    id: 12,
     category: "electronics",
     brand: "apple",
     img: "/images1/imag20.png",
@@ -182,7 +198,7 @@ export const featuredProducts = [
     isNew: false
   },
   {
-    id: 12,
+    id: 13,
     category: "clothing",
     brand: "toteme",
     img: "/images1/imag21.png",
@@ -195,12 +211,42 @@ export const featuredProducts = [
     inStock: true,
     tags: ["sale", "featured", "clothing"],
     isNew: true
+  },
+   {
+    id: 14,
+    category: "beauty",
+    brand: "boston round",
+    img: "/images1/imag5.png",
+    discount: "",
+    title: "Cosmetic Bottles Mockup", 
+    price: "$100",
+    originalPrice: null,
+    rating: 4.5,
+    reviewCount: 39,
+    inStock: true,
+    tags: ["featured", "beauty"],
+    isNew: false
+  },
+  {
+    id: 15,
+    category: "home",
+    brand: "natuzzi",
+    img: "/images1/imag8.png",
+    discount: "",
+    title: "chaise-longue", 
+    price: "$800",
+    originalPrice: null,
+    rating: 4.5,
+    reviewCount: 136,
+    inStock: true,
+    tags: ["featured", "home"],
+    isNew: false
   }
 ];
 
 export const newProducts = [
   {
-    id: 13,
+    id: 16,
     category: "home",
     brand: "dedon",
     img: "/images1/imag23.png",
@@ -215,7 +261,7 @@ export const newProducts = [
     isNew: true
   },
   {
-    id: 14,
+    id: 17,
     category: "beauty",
     brand: "looks", 
     img: "/images1/imag4.png",
@@ -230,7 +276,7 @@ export const newProducts = [
     isNew: true
   },
   {
-    id: 15,
+    id: 18,
     category: "clothing",
     brand: "haut",
     img: "/images1/imag3.png",
@@ -245,7 +291,7 @@ export const newProducts = [
     isNew: true
   },
   {
-    id: 16,
+    id: 19,
     category: "beauty",
     brand: "sunscreen",
     img: "/images1/imag30.png",
@@ -260,7 +306,7 @@ export const newProducts = [
     isNew: true
   },
   {
-    id: 17,
+    id: 20,
     category: "home",
     brand: "dino",
     img: "/images1/imag22.png",
@@ -275,7 +321,7 @@ export const newProducts = [
     isNew: true
   },
   {
-    id: 18,
+    id: 21,
     category: "clothing",
     brand: "prada",
     img: "/images1/imag26.png",
@@ -290,7 +336,7 @@ export const newProducts = [
     isNew: true
   },
   {
-    id: 19,
+    id: 22,
     category: "electronics",
     brand: "moonlight",
     img: "/images1/imag28.png",
@@ -305,7 +351,7 @@ export const newProducts = [
     isNew: true
   },
   {
-    id: 20,
+    id: 23,
     category: "electronics",
     brand: "oppo",
     img: "/images1/imag31.png",
@@ -320,7 +366,7 @@ export const newProducts = [
     isNew: true
   },
   {
-    id: 21,
+    id: 24,
     category: "electronics", 
     brand: "dyson",
     img: "/images1/imag25.png",
@@ -335,7 +381,7 @@ export const newProducts = [
     isNew: true
   },
   {
-    id: 22,
+    id: 25,
     category: "beauty",
     brand: "onoma",
     img: "/images1/imag27.png",
@@ -350,7 +396,7 @@ export const newProducts = [
     isNew: true
   },
   {
-    id: 23,
+    id: 26,
     category: "beauty",
     brand: "rated",
     img: "/images1/imag29.png",
@@ -365,7 +411,7 @@ export const newProducts = [
     isNew: true
   },
   {
-    id: 24,
+    id: 27,
     category: "home",
     brand: "nordic",
     img: "/images1/imag32.png",

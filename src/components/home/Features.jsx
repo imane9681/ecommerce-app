@@ -1,39 +1,48 @@
+// components/home/Features/Features.jsx
 import React, { useRef, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';  // ← أضف هذا
 import styles from './Features.module.css';
-// استيراد أيقونات React Icons
-import { FaShippingFast, FaHeadset, FaShieldAlt, FaExchangeAlt, FaGift, FaAward } from 'react-icons/fa';
+import { 
+  FaShippingFast, FaHeadset, FaShieldAlt, FaExchangeAlt, FaGift, FaAward 
+} from 'react-icons/fa';
 
 const Features = () => {
   const features = [
     {
       icon: <FaShippingFast />,
       title: "FREE SHIPPING",
-      description: "Free delivery on orders over $50"
+      description: "Free delivery on orders over $50",
+      link: "/products?availability=in-stock"  // ← أضف
     },
     {
       icon: <FaHeadset />,
       title: "24/7 SUPPORT",
-      description: "Round-the-clock customer service"
+      description: "Round-the-clock customer service",
+      link: "/contact"  // ← أضف
     },
     {
       icon: <FaShieldAlt />,
       title: "SECURE PAYMENT",
-      description: "100% secure payment processing"
+      description: "100% secure payment processing",
+      link: "/privacy"  // ← أضف
     },
     {
       icon: <FaExchangeAlt />,
       title: "EASY RETURNS",
-      description: "30-day hassle-free returns"
+      description: "30-day hassle-free returns",
+      link: "/returns"  // ← أضف
     },
     {
       icon: <FaGift />,
       title: "GIFT CARDS",
-      description: "Perfect gifts for every occasion"
+      description: "Perfect gifts for every occasion",
+      link: "/products?promotion=sale"  // ← أضف
     },
     {
       icon: <FaAward />,
       title: "LOYALTY REWARDS",
-      description: "Earn points with every purchase"
+      description: "Earn points with every purchase",
+      link: "/register"  // ← أضف
     }
   ];
 
@@ -55,7 +64,6 @@ const Features = () => {
     if (container) {
       container.addEventListener('scroll', updateActiveDot);
       window.addEventListener('resize', updateActiveDot);
-      // تحديث النقطة عند التحميل
       setTimeout(updateActiveDot, 100);
       return () => {
         container.removeEventListener('scroll', updateActiveDot);
@@ -70,7 +78,7 @@ const Features = () => {
         {/* ===== تصميم الحاسوب (شبكة) ===== */}
         <div className={styles.featuresDesktop}>
           {features.map((feature, index) => (
-            <div key={index} className={styles.feat}>
+            <Link to={feature.link} key={index} className={styles.feat}>
               <div className={styles.iconWrapper}>
                 <div className={styles.icon}>
                   {feature.icon}
@@ -84,11 +92,11 @@ const Features = () => {
                   {feature.description}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
-        {/* ===== تصميم الهاتف (شريط أفقي - أيقونة جنب العنوان) ===== */}
+        {/* ===== تصميم الهاتف (شريط أفقي) ===== */}
         <div className={styles.featuresMobile}>
           <div className={styles.mobileScrollWrapper}>
             <div 
@@ -97,14 +105,14 @@ const Features = () => {
             >
               <div className={styles.mobileFeaturesList}>
                 {features.map((feature, index) => (
-                  <div key={index} className={styles.mobileFeat}>
+                  <Link to={feature.link} key={index} className={styles.mobileFeat}>
                     <div className={styles.mobileIcon}>
                       {feature.icon}
                     </div>
                     <span className={styles.mobileTitle}>
                       {feature.title}
                     </span>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>

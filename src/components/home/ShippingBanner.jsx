@@ -1,5 +1,6 @@
 // components/home/ShippingBanner/ShippingBanner.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';  // ← أضف هذا
 import styles from './ShippingBanner.module.css';
 
 const ShippingBanner = ({ 
@@ -8,7 +9,7 @@ const ShippingBanner = ({
   icon = "🚚"
 }) => {
   return (
-    <div className={styles.shippingBanner}>
+    <Link to="/products?availability=in-stock" className={styles.shippingBanner}>
       <div className={styles.bannerIcon}>
         {icon}
       </div>
@@ -18,7 +19,7 @@ const ShippingBanner = ({
           On all orders over {currency}{minAmount}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

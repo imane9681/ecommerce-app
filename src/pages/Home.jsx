@@ -1,3 +1,4 @@
+// Home.jsx
 import React from 'react';
 import HeroSlider from '../components/home/HeroSlider';
 import Features from '../components/home/Features';
@@ -10,7 +11,6 @@ import { featuredProducts, newProducts } from '../utils/constants';
 import Categories from '../components/home/Categories';
 import Testimonials from '../components/home/Testimonials';
 import BlogTips from '../components/home/BlogTips';
-
 
 const Home = () => {
   return (

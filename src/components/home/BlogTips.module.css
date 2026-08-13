@@ -118,7 +118,7 @@
 
 @media (max-width: 48rem) {
   .blogSection {
-    padding: 2.5rem 0;
+    padding: 2.5rem 0rem;
   }
 
   .sectionTitle {
@@ -126,7 +126,7 @@
   }
 
   .blogGrid {
-    grid-template-columns: 1fr;
+    display: grid;
     gap: 0.9375rem;
   }
 

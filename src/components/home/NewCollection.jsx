@@ -1,4 +1,6 @@
+// components/home/NewCollection/NewCollection.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';  // ← أضف هذا
 import styles from './NewCollection.module.css';
 
 const NewCollection = () => {
@@ -14,7 +16,9 @@ const NewCollection = () => {
         <div className={styles.repa}>New Collection 2024</div>
         <div className={styles.rep}>New Arrival Sale 50% OFF Limited Time Offer</div>
         <div className={styles.butt}>
-          <button className={styles.explore} type="submit">Discover Now</button>
+          <Link to="/products?sort=newest&promotion=sale">
+            <button className={styles.explore} type="submit">Discover Now</button>
+          </Link>
         </div>
       </div>
     </div>

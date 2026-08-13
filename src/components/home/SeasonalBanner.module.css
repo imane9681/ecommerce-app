@@ -465,6 +465,7 @@
   transform: translateY(-0.1875rem);
   box-shadow: 0 0.9375rem 2.5rem rgba(253, 182, 115, 0.35);
   letter-spacing: 0.03125rem;
+  color: var(--white);
 }
 
 .arrowIcon {

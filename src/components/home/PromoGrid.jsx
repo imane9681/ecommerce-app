@@ -1,4 +1,6 @@
+// components/home/PromoGrid/PromoGrid.jsx
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';  // ← أضف هذا
 import styles from './PromoGrid.module.css';
 
 const PromoGrid = () => {
@@ -14,7 +16,8 @@ const PromoGrid = () => {
       title: 'Just Arrived',
       description: 'Fresh styles for the season ahead',
       buttonText: 'Explore',
-      gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+      gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+      link: '/products?sort=newest'  // ← أضف
     },
     {
       id: 2,
@@ -22,7 +25,8 @@ const PromoGrid = () => {
       title: 'Up to 60% OFF',
       description: 'Limited time offers on selected items',
       buttonText: 'Shop Sale',
-      gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+      gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+      link: '/products?promotion=sale'  // ← أضف
     },
     {
       id: 3,
@@ -30,7 +34,8 @@ const PromoGrid = () => {
       title: 'Luxury Edition',
       description: 'Exclusive premium collection',
       buttonText: 'Discover',
-      gradient: 'linear-gradient(135deg, #434343 0%, #000000 100%)'
+      gradient: 'linear-gradient(135deg, #434343 0%, #000000 100%)',
+      link: '/products?category=electronics&sort=rating'  // ← أضف
     }
   ];
 
@@ -66,12 +71,10 @@ const PromoGrid = () => {
 
   const handleTouchEnd = () => {
     if (touchStartX.current - touchEndX.current > 50) {
-      // سحب لليسار -> السلايد التالي
       setCurrentSlide((prev) => (prev + 1) % promotions.length);
     }
 
     if (touchStartX.current - touchEndX.current < -50) {
-      // سحب لليمين -> السلايد السابق
       setCurrentSlide((prev) => (prev - 1 + promotions.length) % promotions.length);
     }
 
@@ -88,8 +91,9 @@ const PromoGrid = () => {
       {/* ===== تصميم الحاسوب (شبكة) ===== */}
       <div className={styles.desktopGrid}>
         {promotions.map((promo) => (
-          <div 
+          <Link 
             key={promo.id}
+            to={promo.link}
             className={styles.promoItem}
             style={{ background: promo.gradient }}
           >
@@ -101,11 +105,11 @@ const PromoGrid = () => {
               </span>
               <h3 className={styles.promoTitle}>{promo.title}</h3>
               <p className={styles.promoDescription}>{promo.description}</p>
-              <button className={styles.promoButton}>
+              <span className={styles.promoButton}>
                 {promo.buttonText}
-              </button>
+              </span>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 
@@ -122,8 +126,9 @@ const PromoGrid = () => {
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
             {promotions.map((promo) => (
-              <div 
+              <Link
                 key={promo.id}
+                to={promo.link}
                 className={styles.slideItem}
                 style={{ background: promo.gradient }}
               >
@@ -135,11 +140,11 @@ const PromoGrid = () => {
                   </span>
                   <h3 className={styles.slideTitle}>{promo.title}</h3>
                   <p className={styles.slideDescription}>{promo.description}</p>
-                  <button className={styles.slideButton}>
+                  <span className={styles.slideButton}>
                     {promo.buttonText}
-                  </button>
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

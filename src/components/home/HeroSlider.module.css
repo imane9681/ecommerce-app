@@ -143,6 +143,7 @@
 
 .shop:hover {
   background-color: #fdcea1;
+  color: white;
 }
 
 .fade {
@@ -182,9 +183,9 @@
 
 @media (max-width: 48rem) { /* 768px */
   .slider {
-    height: 100vh;
-    min-height: 28.125rem; /* 450px */
+    height: 93vh;
   }
+ 
 
   /* ===== فقط إخفاء الأسهم ===== */
   .prev,
@@ -194,8 +195,8 @@
 
   /* ===== نفس التصميم مع تعديلات الحجم فقط (مثل تصميمك الأصلي) ===== */
   .txt {
-    left: 5%;
-    top: 22%;
+    left: 10%;
+    top: 12%;
     gap: 0.75rem; /* 12px */
   }
 

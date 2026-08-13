@@ -1,4 +1,6 @@
+// components/home/Newsletter/Newsletter.jsx
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';  // ← أضف هذا
 import styles from './Newsletter.module.css';
 import { FaPaperPlane, FaEnvelope, FaGift, FaShieldAlt } from 'react-icons/fa';
 
@@ -9,10 +11,8 @@ const Newsletter = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email) {
-      // Simulate subscription success
       setIsSubscribed(true);
       setEmail('');
-      // Reset after 3 seconds
       setTimeout(() => setIsSubscribed(false), 3000);
     }
   };
@@ -21,17 +21,20 @@ const Newsletter = () => {
     {
       icon: <FaGift />,
       title: "Exclusive Deals",
-      description: "Get special discounts and offers before anyone else"
+      description: "Get special discounts and offers before anyone else",
+      link: "/products?promotion=sale"
     },
     {
       icon: <FaEnvelope />,
       title: "Weekly Updates",
-      description: "Stay informed about new products and trends"
+      description: "Stay informed about new products and trends",
+      link: "/blog"
     },
     {
       icon: <FaShieldAlt />,
       title: "No Spam",
-      description: "We respect your privacy and won't flood your inbox"
+      description: "We respect your privacy and won't flood your inbox",
+      link: "/privacy"
     }
   ];
 
@@ -49,7 +52,7 @@ const Newsletter = () => {
             
             <div className={styles.features}>
               {features.map((feature, index) => (
-                <div key={index} className={styles.feature}>
+                <Link to={feature.link} key={index} className={styles.feature}>
                   <div className={styles.featureIcon}>
                     {feature.icon}
                   </div>
@@ -57,7 +60,7 @@ const Newsletter = () => {
                     <h4>{feature.title}</h4>
                     <p>{feature.description}</p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

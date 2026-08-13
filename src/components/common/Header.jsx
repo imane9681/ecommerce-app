@@ -54,7 +54,7 @@ const Header = () => {
   const mobileSearchRef = useRef(null);
   const mobileSearchInputRef = useRef(null);
   
-  const mainHeaderPages = ['/', '/login', '/register', '/products', '/blog', '/categories', '/contact', '/about'];
+  const mainHeaderPages = ['/', '/login', '/register', '/products', '/blog', '/categories', '/contact', '/about', '/privacy', '/returns', '/shipping' ];
   const useMainHeader = mainHeaderPages.includes(location.pathname);
   
   const categories = [

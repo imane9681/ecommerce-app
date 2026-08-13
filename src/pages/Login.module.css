@@ -759,10 +759,10 @@
 @media (max-width: 48rem) {
   /* ===== Container ===== */
   .loginContainer {
-    padding: 0.75rem;
+    padding: 5rem;
     min-height: 100vh;
     align-items: flex-start;
-    padding-top: 2rem;
+    padding-top: 7rem;
   }
 
   .loginContainer::before {

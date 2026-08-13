@@ -1,3 +1,4 @@
+// ProductsPage.jsx - مع دعم promotion, sort, brand, rating, price, availability
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import ProductList from '../components/product/ProductList';
@@ -120,7 +121,9 @@ const ProductsPage = () => {
     { value: 'needly', label: 'Needly', icon: <FaSprayCan /> },
     { value: 'toteme', label: 'Toteme', icon: <FaTshirt /> },
     { value: 'looks', label: 'Looks & Meii', icon: <FaSprayCan /> },
-    { value: 'onoma', label: 'Onoma', icon: <FaSprayCan /> }
+    { value: 'onoma', label: 'Onoma', icon: <FaSprayCan /> },
+    { value: 'beats', label: 'Beats', icon: <FaMobile /> },
+    { value: 'moonlight', label: 'Moonlight', icon: <FaMobile /> }
   ];
 
   const promotionsList = [
@@ -139,24 +142,81 @@ const ProductsPage = () => {
     setIsFilterOpen(false);
   };
 
-  // قراءة الـ category من الرابط عند تحميل الصفحة
+  // ===== 🔥 قراءة جميع المعاملات من الرابط =====
   useEffect(() => {
     const params = new URLSearchParams(location.search);
+    
+    // قراءة جميع المعاملات
     const categoryParam = params.get('category');
     const searchParam = params.get('search') || '';
+    const sortParam = params.get('sort');
+    const promotionParam = params.get('promotion');
+    const brandParam = params.get('brand');
+    const ratingParam = params.get('rating');
+    const minPrice = params.get('minPrice');
+    const maxPrice = params.get('maxPrice');
+    const availabilityParam = params.get('availability');
 
+    // تطبيق البحث
     setSearchTerm(searchParam);
 
+    // تطبيق الفئات
     if (categoryParam) {
       setSelectedCategories([categoryParam]);
+    } else {
+      setSelectedCategories([]);
+    }
+
+    // 🔥 تطبيق الترتيب (sort)
+    if (sortParam && ['default', 'newest', 'price-low', 'price-high', 'rating'].includes(sortParam)) {
+      setSortOrder(sortParam);
+    }
+
+    // 🔥 تطبيق العروض (promotion)
+    if (promotionParam) {
+      const promoValue = promotionParam === 'sale' ? 'sale' : 
+                         promotionParam === 'new' ? 'new' : 
+                         promotionParam === 'featured' ? 'featured' : 
+                         promotionParam === 'bestseller' ? 'bestseller' : null;
+      if (promoValue) {
+        setPromotions([promoValue]);
+      }
+    }
+
+    // تطبيق العلامات التجارية
+    if (brandParam) {
+      setSelectedBrands([brandParam]);
+    }
+
+    // تطبيق التقييمات
+    if (ratingParam) {
+      const rating = parseInt(ratingParam);
+      if (rating >= 1 && rating <= 5) {
+        setSelectedRatings([rating]);
+      }
+    }
+
+    // تطبيق السعر
+    if (minPrice) {
+      setPriceRange(prev => ({ ...prev, min: parseInt(minPrice) || 0 }));
+    }
+    if (maxPrice) {
+      setPriceRange(prev => ({ ...prev, max: parseInt(maxPrice) || 1000 }));
+    }
+
+    // تطبيق التوفر
+    if (availabilityParam && ['in-stock', 'out-of-stock'].includes(availabilityParam)) {
+      setAvailability(availabilityParam);
+    }
+
+    // التمرير إلى قسم المنتجات
+    if (categoryParam || searchParam || sortParam || promotionParam) {
       setTimeout(() => {
         const productsSection = document.getElementById('products');
         if (productsSection) {
           productsSection.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 200);
-    } else {
-      setSelectedCategories([]);
+      }, 300);
     }
   }, [location.search]);
 
@@ -196,7 +256,7 @@ const ProductsPage = () => {
     
     if (selectedBrands.length > 0) {
       result = result.filter(product => 
-        selectedBrands.includes(product.brand)
+        selectedBrands.includes(product.brand?.toLowerCase())
       );
     }
     

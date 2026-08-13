@@ -1,5 +1,6 @@
 // components/home/MembershipBanner/MembershipBanner.jsx
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';  // ← أضف هذا
 import { 
   FaCrown, 
   FaShippingFast, 
@@ -25,27 +26,17 @@ const MembershipBanner = () => {
     { icon: <FaHeadset />, text: 'VIP Support' }
   ];
 
-  const handleJoinNow = () => {
-    // Add your join membership logic here
-    console.log('Join Membership clicked');
-    // Example: navigate to membership page
-    // window.location.href = '/membership';
-  };
-
   // Create particles effect
   useEffect(() => {
     const particlesContainer = document.querySelector(`.${styles.particles}`);
     if (!particlesContainer) return;
 
-    // Clear existing particles
     particlesContainer.innerHTML = '';
 
-    // Create 10 particles
     for (let i = 0; i < 10; i++) {
       const particle = document.createElement('div');
       particle.className = styles.particle;
       
-      // Random position
       const left = Math.random() * 100;
       const top = Math.random() * 100;
       const size = 4 + Math.random() * 6;
@@ -116,12 +107,12 @@ const MembershipBanner = () => {
               </div>
             </div>
             
-            <button className={styles.ctaButton} onClick={handleJoinNow}>
+            <Link to="/register?plan=premium" className={styles.ctaButton}>
               <span>Join Premium Now</span>
               <div className={styles.buttonIcon}>
                 <FaArrowRight />
               </div>
-            </button>
+            </Link>
 
             <div className={styles.guarantee}>
               <FaAward />

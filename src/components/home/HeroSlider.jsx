@@ -1,5 +1,6 @@
-// HeroSlider.jsx - مع دعم اللمس
+// HeroSlider.jsx - مع دعم اللمس والروابط
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';  // ← استيراد Link
 import styles from './HeroSlider.module.css';
 
 const HeroSlider = () => {
@@ -12,38 +13,50 @@ const HeroSlider = () => {
     {
       image: "/images/img1.png",
       mobileImage: "/images/image4.png",
-      title: "SUMMER COLLECTION 2024",
-      subtitle: "Fresh Styles",
-      subtitle2: "Amazing Deals",
-      description: "Discover the latest trends with exclusive offers and premium quality",
-      buttonText: "SHOP COLLECTION"
+      tabletImage: "/images/image04.png",
+      title: "BEATS SOLO³",
+      subtitle: "Wireless Freedom",
+      subtitle2: "All-Day Sound",
+      description: "Premium on-ear headphones with 40-hour battery life, Apple W1 chip, and crystal-clear audio.",
+      buttonText: "SHOP NOW",
+      link: "/product/1",
+      badge: "Best Seller"
     },
     {
       image: "/images/img2.png",
       mobileImage: "/images/image3.png",
+      tabletImage: "/images/image03.png",
       title: "LIMITED TIME OFFER",
       subtitle: "Flash Sale",
       subtitle2: "Up to 70% OFF",
       description: "Don't miss our biggest sale of the season - Shop now and save big",
-      buttonText: "GRAB THE DEAL"
+      buttonText: "GRAB THE DEAL",
+      link: "/products?promotion=sale",
+      badge: "Sale"
     },
     {
       image: "/images/img3.png",
       mobileImage: "/images/image2.png",
+      tabletImage: "/images/image02.png",
       title: "NEW ARRIVALS", 
       subtitle: "Just Launched",
       subtitle2: "Hot Products",
       description: "Be the first to explore our newest collection of premium products",
-      buttonText: "EXPLORE NOW"
+      buttonText: "EXPLORE NOW",
+      link: "/products?sort=newest",
+      badge: "New"
     },
     {
       image: "/images/img4.png",
       mobileImage: "/images/image1.png",
+      tabletImage: "/images/image01.png",
       title: "PREMIUM SHOPPING",
       subtitle: "Luxury Experience",
       subtitle2: "Unbeatable Prices",
       description: "Elevate your style with our curated collection of quality products",
-      buttonText: "START SHOPPING"
+      buttonText: "START SHOPPING",
+      link: "/products",
+      badge: "Featured"
     }
   ];
 
@@ -67,21 +80,18 @@ const HeroSlider = () => {
 
   const handleTouchEnd = () => {
     if (touchStartX - touchEndX > 50) {
-      // سحب لليسار -> السلايد التالي
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }
 
     if (touchStartX - touchEndX < -50) {
-      // سحب لليمين -> السلايد السابق
       setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
     }
 
-    // إعادة تعيين القيم
     setTouchStartX(0);
     setTouchEndX(0);
   };
 
-  // ===== دعم التمرير بالماوس (للحاسوب) =====
+  // ===== دعم التمرير بالماوس =====
   const [mouseStartX, setMouseStartX] = useState(0);
   const [mouseEndX, setMouseEndX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -112,7 +122,6 @@ const HeroSlider = () => {
     setMouseEndX(0);
   };
 
-  // منع النقر أثناء السحب
   const handleDragPrevent = (e) => {
     if (isDragging) {
       e.preventDefault();
@@ -123,11 +132,9 @@ const HeroSlider = () => {
     <div 
       className={styles.slider}
       ref={sliderRef}
-      // أحداث اللمس
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      // أحداث الماوس
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
@@ -140,21 +147,27 @@ const HeroSlider = () => {
           className={`${styles.myslide} ${styles.fade} ${index === currentSlide ? styles.active : ''}`}
         >
           <div className={styles.txt}>
-            {index === 0 && <div className={styles.badge}>Limited Time</div>}
+            {slide.badge && <div className={styles.badge}>{slide.badge}</div>}
             <div className={styles.offer}>{slide.title}</div>
             <div className={styles.super}>
               {slide.subtitle}<br/>{slide.subtitle2}
             </div>
             <div className={styles.couponce}>{slide.description}</div>
             <div className={styles.shops}>
-              <button className={styles.shop}>{slide.buttonText}</button>
+              <Link to={slide.link} className={styles.shop}>
+                {slide.buttonText}
+              </Link>
             </div>
           </div>
           
           <picture>
             <source 
-              media="(max-width: 48rem)" 
+              media="(max-width: 30rem)" 
               srcSet={slide.mobileImage} 
+            />
+            <source 
+              media="(max-width: 48rem)" 
+              srcSet={slide.tabletImage} 
             />
             <img src={slide.image} alt={`Slide ${index + 1}`} />
           </picture>

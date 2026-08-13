@@ -512,6 +512,7 @@
     0 0 0 0.0625rem rgba(253, 182, 115, 0.3),
     inset 0 0.0625rem 0 rgba(255, 255, 255, 0.6);
   background-position: 100% 0;
+  color: white;
 }
 
 .ctaButton::before {
