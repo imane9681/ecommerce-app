@@ -1,6 +1,6 @@
-// HeroSlider.jsx - مع دعم اللمس والروابط
+// HeroSlider.jsx - إصلاح مشكلة التنقل بين الشرائح
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';  // ← استيراد Link
+import { Link } from 'react-router-dom';
 import styles from './HeroSlider.module.css';
 
 const HeroSlider = () => {
@@ -8,6 +8,7 @@ const HeroSlider = () => {
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
   const sliderRef = useRef(null);
+  const isTransitioning = useRef(false);  // ← أضف هذا لمنع التداخل
 
   const slides = [
     {
@@ -60,10 +61,24 @@ const HeroSlider = () => {
     }
   ];
 
+  // دالة التنقل الآمنة
+  const goToSlide = (index) => {
+    if (isTransitioning.current) return;  // منع التداخل
+    
+    isTransitioning.current = true;
+    setCurrentSlide(index);
+    
+    setTimeout(() => {
+      isTransitioning.current = false;
+    }, 500);  // نفس مدة انتقال الـ CSS
+  };
+
   // التبديل التلقائي
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      if (!isTransitioning.current) {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+      }
     }, 8000);
 
     return () => clearInterval(timer);
@@ -79,12 +94,16 @@ const HeroSlider = () => {
   };
 
   const handleTouchEnd = () => {
-    if (touchStartX - touchEndX > 50) {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }
-
-    if (touchStartX - touchEndX < -50) {
-      setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    if (isTransitioning.current) return;
+    
+    const diff = touchStartX - touchEndX;
+    
+    if (diff > 50) {
+      // سحب لليسار -> السلايد التالي
+      goToSlide((currentSlide + 1) % slides.length);
+    } else if (diff < -50) {
+      // سحب لليمين -> السلايد السابق
+      goToSlide((currentSlide - 1 + slides.length) % slides.length);
     }
 
     setTouchStartX(0);
@@ -110,18 +129,21 @@ const HeroSlider = () => {
     if (!isDragging) return;
     setIsDragging(false);
 
-    if (mouseStartX - mouseEndX > 50) {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }
-
-    if (mouseStartX - mouseEndX < -50) {
-      setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    if (isTransitioning.current) return;
+    
+    const diff = mouseStartX - mouseEndX;
+    
+    if (diff > 50) {
+      goToSlide((currentSlide + 1) % slides.length);
+    } else if (diff < -50) {
+      goToSlide((currentSlide - 1 + slides.length) % slides.length);
     }
 
     setMouseStartX(0);
     setMouseEndX(0);
   };
 
+  // منع النقر أثناء السحب
   const handleDragPrevent = (e) => {
     if (isDragging) {
       e.preventDefault();
@@ -174,10 +196,19 @@ const HeroSlider = () => {
         </div>
       ))}
       
-      <a className={styles.prev} onClick={() => setCurrentSlide(prev => (prev - 1 + slides.length) % slides.length)}>
+      {/* ===== الأسهم - استخدم goToSlide ===== */}
+      <a 
+        className={styles.prev} 
+        onClick={() => goToSlide((currentSlide - 1 + slides.length) % slides.length)}
+        aria-label="Previous slide"
+      >
         &#10094;
       </a>
-      <a className={styles.next} onClick={() => setCurrentSlide(prev => (prev + 1) % slides.length)}>
+      <a 
+        className={styles.next} 
+        onClick={() => goToSlide((currentSlide + 1) % slides.length)}
+        aria-label="Next slide"
+      >
         &#10095;
       </a>
       
@@ -186,7 +217,7 @@ const HeroSlider = () => {
           <span 
             key={index}
             className={`${styles.dot} ${index === currentSlide ? styles.active : ''}`}
-            onClick={() => setCurrentSlide(index)}
+            onClick={() => goToSlide(index)}
           ></span>
         ))}
       </div>
