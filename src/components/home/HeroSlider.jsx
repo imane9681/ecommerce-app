@@ -1,4 +1,4 @@
-// HeroSlider.jsx - إصلاح مشكلة التنقل بين الشرائح
+// HeroSlider.jsx 
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './HeroSlider.module.css';
