@@ -572,93 +572,512 @@
   color: #999;
 }
 
-/* ===== Responsive ===== */
+/* ============================================================ */
+/* ===== تحسينات الهاتف فقط (لا تؤثر على الحاسوب) ===== */
+/* ============================================================ */
+
 @media (max-width: 48rem) {
+  /* تحسين تنسيق المحتوى */
   .modalContent {
     max-width: 100%;
-    max-height: 95vh;
+    max-height: 90vh;
     border-radius: 1rem;
     margin: 0.5rem;
+    overflow: hidden;
   }
 
   .modalHeader {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
+    flex-shrink: 0;
   }
 
   .modalTitle h2 {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
-  .searchSection {
-    padding: 0.75rem 1rem 0.25rem;
+  .titleIcon {
+    font-size: 1rem;
   }
 
-  .filterSection {
-    padding: 0.25rem 1rem;
-    gap: 0.5rem;
-  }
-
-  .resultsSection {
-    padding: 0.25rem 1rem 0.75rem;
-  }
-
-  .similarGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .modalFooter {
-    padding: 0.75rem 1rem;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.5rem;
-  }
-
-  .viewAllBtn {
-    justify-content: center;
-  }
-
-  .footerHint {
-    text-align: center;
-  }
-}
-
-@media (max-width: 30rem) {
-  .similarGrid {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-  }
-
-  .similarItem {
-    padding: 0.5rem;
-  }
-
-  .filterOptions {
-    gap: 0.25rem;
-  }
-
-  .filterBtn {
-    padding: 0.2rem 0.6rem;
-    font-size: 0.7rem;
-  }
-
-  .resultItem {
-    padding: 0.5rem;
-  }
-
-  .resultImage {
-    width: 3.5rem;
-    height: 3.5rem;
-  }
-
-  .resultInfo h4 {
-    font-size: 0.85rem;
-  }
-
-   .closeBtn {
+  .closeBtn {
     width: 2rem;
     height: 2rem;
     font-size: 0.9rem;
     top: 0.5rem;
     right: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .closeBtn svg {
+    font-size: 0.9rem;
+  }
+
+  /* تحسين شريط البحث */
+  .searchSection {
+    padding: 1rem 1rem 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .searchForm {
+    gap: 0.4rem;
+  }
+
+  .searchInput {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+    min-height: 2.5rem;
+  }
+
+  .searchBtn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+    min-height: 2.5rem;
+    min-width: 2.8rem;
+  }
+
+  .searchBtn svg {
+    font-size: 0.9rem;
+  }
+
+  /* تحسين الفلاتر */
+  .filterSection {
+    padding: 0.5rem 1rem;
+    gap: 0.4rem;
+    flex-shrink: 0;
+  }
+
+  .filterLabel {
+    font-size: 0.75rem;
+  }
+
+  .filterIcon {
+    font-size: 0.7rem;
+  }
+
+  .filterOptions {
+    gap: 0.3rem;
+  }
+
+  .filterBtn {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.7rem;
+    border-radius: 1rem;
+  }
+
+  /* تحسين نتائج البحث */
+  .resultsSection {
+    padding: 0.25rem 1rem 0.75rem;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  .similarHeader h3 {
+    font-size: 0.9rem;
+  }
+
+  .similarCount {
+    font-size: 0.7rem;
+  }
+
+  .similarGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+
+  .similarItem {
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+  }
+
+  .similarItem:hover {
+    transform: translateY(-0.125rem);
+  }
+
+  .similarImage {
+    border-radius: 0.4rem;
+  }
+
+  .similarImage img {
+    padding: 0.2rem;
+  }
+
+  .similarInfo h4 {
+    font-size: 0.75rem;
+    white-space: normal;
+    line-height: 1.3;
+    min-height: 2.2rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .similarRating {
+    gap: 0.0625rem;
+  }
+
+  .starFilled,
+  .starEmpty {
+    font-size: 0.6rem;
+  }
+
+  .similarPrice {
+    font-size: 0.8rem;
+  }
+
+  .similarDiscount {
+    font-size: 0.55rem;
+    padding: 0.1rem 0.3rem;
+  }
+
+  /* تحسين نتائج البحث */
+  .resultsHeader h3 {
+    font-size: 0.9rem;
+  }
+
+  .resultsCount {
+    font-size: 0.7rem;
+  }
+
+  .resultItem {
+    padding: 0.6rem;
+    gap: 0.6rem;
+    border-radius: 0.5rem;
+  }
+
+  .resultImage {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 0.4rem;
+    flex-shrink: 0;
+  }
+
+  .resultImage img {
+    padding: 0.2rem;
+  }
+
+  .resultInfo h4 {
+    font-size: 0.85rem;
+    margin-bottom: 0.15rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .resultMeta {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .resultCategory {
+    font-size: 0.65rem;
+  }
+
+  .metaIcon {
+    font-size: 0.5rem;
+  }
+
+  .resultPrice {
+    font-size: 0.8rem;
+  }
+
+  .resultRating {
+    gap: 0.125rem;
+  }
+
+  .resultRating .starFilled,
+  .resultRating .starEmpty {
+    font-size: 0.6rem;
+  }
+
+  .resultReviews {
+    font-size: 0.65rem;
+  }
+
+  /* تحسين حالة التحميل */
+  .loading {
+    padding: 1.5rem 0;
+  }
+
+  .spinner {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  .loading span {
+    font-size: 0.8rem;
+  }
+
+  /* تحسين حالة عدم وجود نتائج */
+  .noResults {
+    padding: 1.5rem 0;
+  }
+
+  .noResultsIcon {
+    font-size: 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .noResultsIcon svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .noResults h4 {
+    font-size: 0.95rem;
+  }
+
+  .noResults p {
+    font-size: 0.8rem;
+  }
+
+  /* تحسين التذييل */
+  .modalFooter {
+    padding: 0.6rem 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .viewAllBtn {
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 0.5rem;
+  }
+
+  .viewAllIcon {
+    font-size: 0.7rem;
+  }
+
+  .footerHint {
+    font-size: 0.75rem;
+    text-align: center;
+  }
+}
+
+/* ===== هواتف صغيرة جداً ===== */
+@media (max-width: 30rem) {
+  .modalContent {
+    height: 80vh;
+    margin: 0.25rem;
+    border-radius: 0.75rem;
+  }
+
+  .modalHeader {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .modalTitle h2 {
+    font-size: 0.85rem;
+  }
+
+  .titleIcon {
+    font-size: 0.85rem;
+  }
+
+  .closeBtn {
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 0.8rem;
+  }
+
+  .closeBtn svg {
+    font-size: 0.8rem;
+  }
+
+  .searchSection {
+    padding: 0.5rem 0.75rem 0.5rem;
+  }
+
+  .searchInput {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem;
+    min-height: 2.2rem;
+  }
+
+  .searchBtn {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.8rem;
+    min-height: 2.2rem;
+    min-width: 2.4rem;
+  }
+
+  .searchBtn svg {
+    font-size: 0.8rem;
+  }
+
+  .filterSection {
+    padding: 0.15rem 0.75rem 0.5rem;
+    gap: 0.3rem;
+  }
+
+  .filterLabel {
+    font-size: 0.65rem;
+  }
+
+  .filterBtn {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.6rem;
+  }
+
+  .resultsSection {
+    padding: 0.15rem 0.75rem 0.6rem;
+  }
+
+  .similarGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+  }
+
+  .similarItem {
+    padding: 0.4rem;
+  }
+
+  .similarInfo h4 {
+    font-size: 0.65rem;
+    min-height: 1.8rem;
+  }
+
+  .similarPrice {
+    font-size: 0.7rem;
+  }
+
+  .similarDiscount {
+    font-size: 0.5rem;
+  }
+
+  .resultItem {
+    padding: 0.4rem;
+    gap: 0.5rem;
+  }
+
+  .resultImage {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .resultInfo h4 {
+    font-size: 0.75rem;
+  }
+
+  .resultPrice {
+    font-size: 0.7rem;
+  }
+
+  .resultCategory {
+    font-size: 0.6rem;
+  }
+
+  .resultRating .starFilled,
+  .resultRating .starEmpty {
+    font-size: 0.5rem;
+  }
+
+  .resultReviews {
+    font-size: 0.55rem;
+  }
+
+  .modalFooter {
+    padding: 0.4rem 0.75rem;
+    gap: 0.4rem;
+  }
+
+  .viewAllBtn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  .footerHint {
+    font-size: 0.65rem;
+  }
+}
+
+/* ============================================================ */
+/* ===== الهواتف في الوضع الأفقي ===== */
+/* ============================================================ */
+
+@media (max-height: 500px) and (orientation: landscape) and (max-width: 48rem) {
+  .modalContent {
+    max-height: 90vh;
+    margin: 0.25rem;
+  }
+
+  .modalHeader {
+    padding: 0.4rem 0.75rem;
+  }
+
+  .modalTitle h2 {
+    font-size: 0.9rem;
+  }
+
+  .searchSection {
+    padding: 0.3rem 0.75rem 0.1rem;
+  }
+
+  .searchInput {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+    min-height: 2rem;
+  }
+
+  .searchBtn {
+    padding: 0.4rem 0.7rem;
+    min-height: 2rem;
+    min-width: 2.2rem;
+  }
+
+  .filterSection {
+    padding: 0.1rem 0.75rem;
+  }
+
+  .resultsSection {
+    padding: 0.1rem 0.75rem 0.4rem;
+  }
+
+  .similarGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+  }
+
+  .similarItem {
+    padding: 0.3rem;
+  }
+
+  .similarInfo h4 {
+    font-size: 0.6rem;
+    min-height: 1.4rem;
+  }
+
+  .similarImage {
+    height: 4rem;
+  }
+
+  .resultItem {
+    padding: 0.3rem;
+    gap: 0.4rem;
+  }
+
+  .resultImage {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .resultInfo h4 {
+    font-size: 0.7rem;
+  }
+
+  .modalFooter {
+    padding: 0.3rem 0.75rem;
+  }
+
+  .viewAllBtn {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.7rem;
   }
 }
